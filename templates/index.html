@@ -16,6 +16,7 @@
           <h1>What's ボンビーウォーカー？？？</h1>
           <p>これは<strong>極貧大学生<strong>向けのアプリです。</p>
           <p>お金を持っている人はもうちょっと待ってね☆</p>
+          <a href="search.html">予算入力はこちら</a>
         </div>
 
         <div id = "main_table">
@@ -25,6 +26,11 @@
                   <th>項目</th><th>ジャンル</th><th>金額</th><th>場所</th><th>出来ること</th>
                 </tr>
               </thead>
+
+<!--              <form action="/result" method="POST">
+                <p>予算を入力してください。<input type="text" name="item" size="30"></p>
+                <p><input type="submit" value="検索"></p>
+              </form> -->
 
               <tbody>
                <!-- <tr><td>{{ data[0] }} </td><td>{{ data[1] }}</td><td>{{ data[2] }}</td><td>{{ data[3] }}</td><td>{{ data[4] }}</td></tr>
@@ -38,7 +44,6 @@
                 <tr><td>9</td><td>グルメ</td><td>0</td><td>嘉悦大学</a></td><td>ビワ</td></tr>
                 <tr><td>10</td><td>グルメ</td><td>0</td><td>小金井公園</a></td><td>ドングリが食べられる</td></tr>
                 <tr><td>11</td><td>グルメ</td><td>0</td><td>小金井公園</a></td><td>水飲み放題</td></tr> -->
-
                 <!-- loop test -->
                 {%for row in data%}
                   <tr>
@@ -47,11 +52,10 @@
                   {%endfor%}
                   </tr>
                 {%endfor%}
-                
+
             </tbody>
           </table>
         </div>
     </div>
   </body>
 </html>
-

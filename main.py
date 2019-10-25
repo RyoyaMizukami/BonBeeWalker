@@ -1,5 +1,5 @@
 #using: utf-8
-from flask import Flask, render_template
+from flask import Flask, render_template, session, redirect, url_for, escape, request
 import psycopg2
 import os
 app = Flask(__name__)
@@ -15,8 +15,9 @@ cur.close()
 get_connection().close()
 
 @app.route('/')
-def hello_world():
+def index():
     return render_template('index.html', len = len(data), data = data)
+
 
 if __name__ == "__main__":
     app.run()
