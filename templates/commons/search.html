@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="jp" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="../static/css/styles.css"/>
+    <title>みんなで作るボンビーウォーカー！ - 予算入力ページ</title>
+  </head>
+
+  <body>
+    <form action="/post" method="post">
+      <p>予算を入力してください</p>
+      <p>0円から1000円までの入力に対応しております</p>
+      <p><input placeholder="例)500" type="number" name="budget" min="0" max="1000"> </p>
+      {% if IsValue%}
+       <font color="red">未入力です。値を入力してください。</font><br>
+      {% endif %}
+      <p><input type=submit value=検索する></p>
+    </form>
+  </body>
+</html>

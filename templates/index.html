@@ -16,14 +16,14 @@
           <h1>What's ボンビーウォーカー？？？</h1>
           <p>これは<strong>極貧大学生<strong>向けのアプリです。</p>
           <p>お金を持っている人はもうちょっと待ってね☆</p>
-          <a href="search.html">予算入力はこちら</a>
+          <a href= {{url_for('search')}}>予算入力はこちら</a>
         </div>
 
         <div id = "main_table">
           <table border="1" align="center">
               <thead>
                 <tr>
-                  <th>項目</th><th>ジャンル</th><th>金額</th><th>場所</th><th>出来ること</th>
+                  <th>ジャンル</th><th>金額</th><th>場所</th><th>出来ること</th>
                 </tr>
               </thead>
 
@@ -45,14 +45,15 @@
                 <tr><td>10</td><td>グルメ</td><td>0</td><td>小金井公園</a></td><td>ドングリが食べられる</td></tr>
                 <tr><td>11</td><td>グルメ</td><td>0</td><td>小金井公園</a></td><td>水飲み放題</td></tr> -->
                 <!-- loop test -->
-                {%for row in data%}
-                  <tr>
-                  {%for value in row %}
-                    <td>{{value}}</td>
+                {%if len != 0%}
+                  {%for row in data%}
+                    <tr>
+                    {%for value in row %}
+                      <td>{{value}}</td>
+                    {%endfor%}
+                    </tr>
                   {%endfor%}
-                  </tr>
-                {%endfor%}
-
+                {%endif%}
             </tbody>
           </table>
         </div>
