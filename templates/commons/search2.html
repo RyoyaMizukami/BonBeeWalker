@@ -5,28 +5,57 @@
     <link rel="stylesheet" href="/static/css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.1.2/css/bulma.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
-    <title>みんなで作るボンビーウォーカー - 予算入力ページ</title>
+    <title>みんなで作るボンビーウォーカー!!!</title>
   </head>
-  <header class="nav">
-    <div class="nav-left">
-      <span class="nav-item">
 
-      </span>
-
+  <nav class="navbar is-primary" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+      <a class="navbar-item" href={{url_for('search2')}}>
+        <img src="/static/images/bonbeelogo.png" width="200" height="50">
+      </a>
     </div>
 
-  </header>
+    <!-- <div id="navbarBasicExample" class="navbar-menu">
+      <div class="navbar-start">
+        <a class="navbar-item" href="{{url_for('search2')}}">
+          予算で検索
+        </a>
+
+        <a class="navbar-item">
+          地域で検索
+        </a>
+      </div>
+    </dixv>
+   -->
+ </nav>
+ 
   <body class="index_bg">
     <div class="main_logo">
-      <img src="/static/images/bonbeelogo.png" alt="bonbeewalker-logo">
+      <img src="/static/images/bonbeelogo.png" alt="bonbeewalker-logo" class="logo_size">
     </div>
     <div class="introduction">
       <p>予算を入力して、激安ツアー開始！</p>
     </div>
     <div class="search_window">
-      <form action="/post" method="post">
-      <input type="number" size=100 name="budget" min="0" max="1000">
-      <input type=submit value=検索する>
+    <form action="/post" method="post">
+      <select class="pulldown_menu" name="type">
+        <option value="">選択してください</option>
+        <option value="休憩">休憩</option>
+        <option value="レジャー・スポーツ">レジャー・スポーツ</option>
+        <option value="娯楽">娯楽</option>
+        <option value="グルメ">グルメ</option>
+        <option value="ショッピング">ショッピング</option>
+        <option value="パワースポット">パワースポット</option>
+        <option value="トイレ">トイレ</option>
+        <option value="デートスポット">デートスポット</option>
+      </select>
+      <input type="number" size=100 name="budget" min="0" max="1000" class="wide_window">
+      <!--<input type=submit value=検索する class="big_button">-->
+      <input type=submit value=検索! class="button is-primary is-large">
+    </form>
     </div>
+    {% if IsValue%}
+     <font color="red" class="error_message">未入力です。値を入力してください。</font><br>
+    {% endif %}
   </body>
 </html>
