@@ -3,22 +3,24 @@
   <head>
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="../static/css/styles.css"/>
-    <title>みんなで作るボンビーウォーカー！</title>
+    <title>みんなで作るボンビーウォーカー！ - 検索結果ページ</title>
   </head>
 
-  <body>
-    <div class="parent">
-        <div id="title">
-          <h1>みんなで作るボンビーウォーカー!</h1>
-        </div>
+  <nav class="navbar is-primary" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+      <a class="navbar-item" href={{url_for('search2')}}>
+        <img src="/static/images/bonbeelogo.png" width="200" height="50">
+      </a>
+    </div>
 
-        <div id = "introduction">
-          <h1>What's ボンビーウォーカー？？？</h1>
-          <p>これは<strong>極貧大学生<strong>向けのアプリです。</p>
-          <p>お金を持っている人はもうちょっと待ってね☆</p>
-          <a href= {{url_for('search')}}>予算入力はこちら</a>
-        </div>
-
+  <body class="index_bg">
+    <div class="result_in_money">
+      {% if budget%}
+      <p class="budget">予算{{budget}}円で出来ることはこれ！</p>
+      {% else %}
+      <p class="budget">ジャンル[{{type}}]で出来ることはこれ！</p>
+      {% endif %}
+    </div>
         <div id = "main_table">
           <table border="1" align="center">
               <thead>
