@@ -39,7 +39,7 @@
     <div class="search_window">
     <form action="/post" method="post">
       <select class="pulldown_menu" name="type">
-        <option value="">選択してください</option>
+        <option value="">ジャンルを選択！</option>
         <option value="休憩">休憩</option>
         <option value="レジャー・スポーツ">レジャー・スポーツ</option>
         <option value="娯楽">娯楽</option>
@@ -49,13 +49,13 @@
         <option value="トイレ">トイレ</option>
         <option value="デートスポット">デートスポット</option>
       </select>
-      <input type="number" size=100 name="budget" min="0" max="1000" class="wide_window">
+      <input type="number" size=100 name="budget" min="0" max="1000" class="wide_window" placeholder="0～1000円を入力！"　>
       <!--<input type=submit value=検索する class="big_button">-->
       <input type=submit value=検索! class="button is-primary is-large">
     </form>
     </div>
     {% if IsValue%}
-     <font color="red" class="error_message">未入力です。値を入力してください。</font><br>
+     <font color="red" class="error_message">値を入力してね！</font><br>
     {% endif %}
   </body>
 </html>
