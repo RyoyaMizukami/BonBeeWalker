@@ -3,12 +3,16 @@
   <head>
   <center>
     <meta charset="utf-8">
-    <title>ボンビーウォーカー登録ページ</title>
-<p>みんなのおすすめを登録してみよう！！<p>
-<form action="cgi-bin/example.cgi" method="post">
-  <form action="" method="post">
+  <form>
+      <title>ボンビーウォーカー登録ページ</title>
+<p>みんなのおすすめを登録してみよう！！</p>
+<p>どこらへん？</p>
+  <form action="cgi-bin/example.cgi" method="post">
+  <input type="search" name="search" placeholder="(例)花小金井駅">
+  <input type="submit" name="submit" value="検索">
+</form>
    <div>
-  		 <p><label for="s_job">ジャンルは？</label><p>
+  		 <p><label for="s_job">ジャンルは？</label></p>
   		<select id="s_job" name="job">
   			<option value="">選択してください</option>
   			<option value="休憩">休憩</option>
@@ -23,16 +27,16 @@
    </div>
     <div class="btn_area">
   	</div>
-  </form>
   </head>
   <body>
-  <p>値段は？（半角数字）<p>
+  <p>値段は？（半角数字）</p>
   <Form>
     <input type="number" name="num">
   </form>
-  <p>何ができた？<p>
-    <input type="text" style="width:300px;height:120px;">
-    <p><input type="submit" name="submit" value="登録！"<p>
+  <p>何ができた？</p>
+    <textarea rows =10 cols="40"></textarea>
+    <p><input type="submit" name="submit" value="登録！"></p>
+    </form>
   </body>
 </html>
-<center>
+</center>
