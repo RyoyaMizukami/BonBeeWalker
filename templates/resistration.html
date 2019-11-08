@@ -3,10 +3,10 @@
   <head>
   <center>
     <meta charset="utf-8">
+    <form>
     <title>ボンビーウォーカー登録ページ</title>
 <p>みんなのおすすめを登録してみよう！！<p>
-<form action="cgi-bin/example.cgi" method="post">
-  <form action="" method="post">
+  <action="" method="post">
    <div>
   		 <p><label for="s_job">ジャンルは？</label><p>
   		<select id="s_job" name="job">
@@ -23,16 +23,14 @@
    </div>
     <div class="btn_area">
   	</div>
-  </form>
   </head>
   <body>
   <p>値段は？（半角数字）<p>
-  <Form>
-    <input type="number" name="num">
-  </form>
+    <input type="number" name="num" max="1000">
   <p>何ができた？<p>
-    <textarea rows =2 cols="25" maxlength="50"></textarea>
-    <p><input type="submit" name="submit" value="登録！"<p>
+    <textarea rows =2 cols="50"></textarea>
+    <p><input type="submit" name="submit" value="登録！"><p>
   </body>
+  </form>
 </html>
 <center>
