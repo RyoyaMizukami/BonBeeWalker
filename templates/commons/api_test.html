@@ -2,9 +2,24 @@
 <html lang="jp" dir="ltr">
   <head>
     <meta charset="utf-8">
+    <script type="text/javascript" src="../../static/js/gmap_api_test.js"></script>
+    <link rel="stylesheet" href="../../static/css/gmap_api_test.css">
     <title>api-test</title>
-  </head>
+    <meta charset="utf-8">
   <body>
-
+    <p class="midasi1">座標の取得サンプル</p>
+    <div style="display: none">
+    <input id="pac-input"
+           class="controls"
+           type="text"
+           placeholder="地名・店名を入力">
+    </div>
+      <div id="map"></div>  <!--地図を表示する div 要素-->
+    <div id="infowindow-content">
+        <span id="place-name" class="title"></span><br>
+        <strong>Place ID:</strong> <span id="place-id"></span><br>
+        <span id="place-address"></span>
+    </div>
+    <script src="http://maps.google.com/maps/api/js?key={{API_key}}&callback=initMap&libraries=places" async defer></script>
   </body>
 </html>
