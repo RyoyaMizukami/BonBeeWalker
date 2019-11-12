@@ -1,0 +1,168 @@
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+html, body{
+  height: 105%;
+  width: 100%;
+  margin: auto auto;
+  padding: 0;
+  background-color: #44CF8A;
+}
+
+.form_box{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.title_box{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+#map{
+  height: 400px;
+  width: 400px;
+}
+
+.hidden{
+  display: none;
+}
+
+.midasi1{
+  font-size: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.controls {
+        background-color: #fff;
+        border-radius: 2px;
+        border: 1px solid transparent;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+        box-sizing: border-box;
+        font-family: Roboto;
+        font-size: 15px;
+        font-weight: 300;
+        height: 29px;
+        margin-left: 17px;
+        margin-top: 10px;
+        outline: none;
+        padding: 0 11px 0 13px;
+        text-overflow: ellipsis;
+        width: 200px;
+      }
+
+.controls:focus {
+        border-color: #4d90fe;
+      }
+.title {
+        font-weight: bold;
+      }
+#infowindow-content {
+        display: none;
+      }
+#map #infowindow-content {
+        display: inline;
+      }
+
+.error_message{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  font-size: 30px;
+}
+
+.item_heading{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  font-size: 30px;
+  font-family: "メイリオ", sans-serif;
+  color: white;
+  text-shadow: 2px 2px 1px #999999;
+}
+
+.type_select{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.pulldown_menu{
+  font-size: 30px;
+  width: 330px;
+  text-align: center;
+}
+
+.money_input{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.money_window{
+  font-size: 30px;
+  width: 300px;
+  text-align: right;
+}
+
+.yen{
+  font-size: 30px;
+  font-family: "メイリオ", sans-serif;
+  color: white;
+  text-shadow: 2px 2px 1px #999999;
+}
+
+.map_view{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.place_input{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.place_window{
+  font-size: 30px;
+  width: 500px;
+  text-align: center;
+}
+
+.cando_input{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.cando_window{
+  font-size: 30px;
+  width: 700px;
+  text-align: center;
+}
+
+.submit_button_box{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.submit_button{
+  font-size: 30px;
+  width: 150px;
+}
+
+.title_font{
+  font-size: 50px;
+  font-family: "メイリオ", sans-serif;
+  color: black;
+  text-shadow: 2px 2px 1px #999999;
+}
