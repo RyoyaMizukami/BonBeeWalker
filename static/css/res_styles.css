@@ -5,7 +5,7 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 html, body{
-  height: 100vh;
+  height: 105%;
   width: 100%;
   margin: auto auto;
   padding: 0;
@@ -25,11 +25,8 @@ html, body{
 }
 
 #map{
-  height: 50%;
-  width: 30%;
-  display: flex;
-  justify-content: center;
-  margin: auto 35%;
+  height: 400px;
+  width: 400px;
 }
 
 .hidden{
@@ -58,7 +55,7 @@ html, body{
         outline: none;
         padding: 0 11px 0 13px;
         text-overflow: ellipsis;
-        width: 400px;
+        width: 200px;
       }
 
 .controls:focus {
@@ -79,4 +76,93 @@ html, body{
   flex-direction: row;
   justify-content: center;
   font-size: 30px;
+}
+
+.item_heading{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  font-size: 30px;
+  font-family: "メイリオ", sans-serif;
+  color: white;
+  text-shadow: 2px 2px 1px #999999;
+}
+
+.type_select{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.pulldown_menu{
+  font-size: 30px;
+  width: 330px;
+  text-align: center;
+}
+
+.money_input{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.money_window{
+  font-size: 30px;
+  width: 300px;
+  text-align: right;
+}
+
+.yen{
+  font-size: 30px;
+  font-family: "メイリオ", sans-serif;
+  color: white;
+  text-shadow: 2px 2px 1px #999999;
+}
+
+.map_view{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.place_input{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.place_window{
+  font-size: 30px;
+  width: 500px;
+  text-align: center;
+}
+
+.cando_input{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.cando_window{
+  font-size: 30px;
+  width: 700px;
+  text-align: center;
+}
+
+.submit_button_box{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.submit_button{
+  font-size: 30px;
+  width: 150px;
+}
+
+.title_font{
+  font-size: 50px;
+  font-family: "メイリオ", sans-serif;
+  color: black;
+  text-shadow: 2px 2px 1px #999999;
 }

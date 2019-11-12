@@ -83,7 +83,7 @@ def registing():
         return render_template('commons/search2.html', IsValue = IsValue)
     else:
         IsValue = True
-        return render_template('commons/resister.html', IsValue = IsValue)
+        return render_template('commons/resister.html', IsValue = IsValue, API_key = API_key)
 
 if __name__ == "__main__":
     app.run()
