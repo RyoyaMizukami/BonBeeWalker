@@ -3,24 +3,98 @@
   <head>
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="../static/css/styles.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.css">
     <title>みんなで作るボンビーウォーカー！ - 検索結果ページ</title>
   </head>
 
-  <nav class="navbar is-primary" role="navigation" aria-label="main navigation">
-    <div class="navbar-brand">
-      <a class="navbar-item" href={{url_for('search2')}}>
-        <img src="/static/images/bonbeelogo.png" width="200" height="50">
-      </a>
+<!--ここからはサーチ画面に戻すロゴを表示してくれる枠です。
+-nav君は横並びにしてくれます。-->
+<body class="index_bg">
+    <!--<nav class="navbar is-primary" role="navigation" aria-label="main navigation">-->
+    <div class="columns is-mobile">
+      <div class="column is-3">
+          <!--<div class="navbar-brand">-->
+            <a class="navbar-item" href={{url_for('search2')}}>
+              <img src="/static/images/bonbeelogo.png" width="200" height="100">
+            </a>
+
+            <span class="icon">
+              <i class="fas fa-home"></i>
+            </span>
+          </div>
+      </div>
     </div>
 
-  <body class="index_bg">
-    <div class="result_in_money">
-      {% if budget%}
-      <p class="budget">予算{{budget}}円で出来ることはこれ！</p>
-      {% else %}
-      <p class="budget">ジャンル[{{type}}]で出来ることはこれ！</p>
-      {% endif %}
+<!--ここはヘッダーに関する記述です。-->
+  <div class="columns is-mobile">
+    <div class="column is-12">
+      <div class="hero is-primary">
+       <div class="hero-body">
+
+              <h1 class="title is-pulled-lefts">
+              <!--ここからは検索した内容を表示する枠です。-->
+                  <div class="result_in_money">
+                    {% if budget%}
+                    <p class="budget">予算{{budget}}円で出来ることはこれ！</p>
+                    {% else %}
+                    <p class="budget">ジャンル[{{type}}]で出来ることはこれ！</p>
+                    {% endif %}
+                  </div>
+              </h1>
+          <!-- <h2　class="subtitle">↓もう一回検索はこちら！！</h2> -->
+
+         </div>
+      </div>
     </div>
+  </div>
+
+
+<!--ここからは検索枠を出したりする記述です。-->
+  <div class="columns is-mobile">
+      <div class="column is-4 is-offset-8">
+      <!--Font Awesomeのアイコンを表示するための記述　※うまく使えないため保留
+      <div class="nav-left">
+          <span class="nav-item">
+              <span class="fa fa-language is-outlined"></span>ここはダミーの枠だよ！
+          </span>
+      </div>
+    -->
+    <!--  <div class="nav-right">
+        <span class="nav-item">-->
+          <div class="control has-addons">
+            <input class="input" type="search" name="search" placeholder="0〜1000円を入力してください。">
+            <a class="button is-info" href={{url_for('search2')}}><i class="fa fa-search"></i>再検索</a>
+            </a>
+          </div>
+        </span>
+        <!--ここもFont Awesomeのアイコンを表示しながら、アンカータグを使う記述　※これもうまく使えないため保留
+        <span class="nav-item">
+          <a href="#" class="fa fa-user">ログイン</a>
+        </span>
+        -->
+      </div>
+    </div>
+  </div>
+
+<!--ここからはヘッダーの最後の部分です。-->
+<div class="columns is-mobile">
+  <div class="column is-three-fifths is-offset-one-fifth">
+  <section class="level">
+     <div class="level-left"></div>
+     <div class="level-right">
+       <div class="level-item tabs">
+         <ul>
+           <li class="is-active"><a>表示1</a></li>
+             <!--<li><a>表示2</a></li>
+             <li><a>表示3</a></li>今回は不自然なため非表示-->
+           </ul>
+        </div>
+     </div>
+  </section>
+  </div>
+</div>
+
+<!--ここからは表の要素を入れる記述です。※これからは使わないため、非表示
         <div id = "main_table">
           <table border="1" align="center">
               <thead>
@@ -29,24 +103,8 @@
                 </tr>
               </thead>
 
-<!--              <form action="/result" method="POST">
-                <p>予算を入力してください。<input type="text" name="item" size="30"></p>
-                <p><input type="submit" value="検索"></p>
-              </form> -->
-
               <tbody>
-               <!-- <tr><td>{{ data[0] }} </td><td>{{ data[1] }}</td><td>{{ data[2] }}</td><td>{{ data[3] }}</td><td>{{ data[4] }}</td></tr>
-                <tr><td>2</td><td>休憩</td><td>0</td><td>嘉悦大学</td><td>ラウンジで寝れる</td></tr>
-                <tr><td>3</td><td>休憩</td><td>0</td><td>小金井公園</td><td>休めるね</td></tr>
-                <tr><td>4</td><td>休憩</td><td>0</td><td>嘉悦大学（北口）</a></td><td>ベンチで座れる</td></tr>
-                <tr><td>5</td><td>レジャー</td><td>0</td><td>嘉悦大学</a></td><td>聴講</td></tr>
-                <tr><td>6</td><td>レジャー</td><td>0</td><td>花小金井ひょうたん池公園</a></td><td>プール</td></tr>
-                <tr><td>7</td><td>レジャー</td><td>0</td><td>小金井公園</a></td><td>アスレチック</td></tr>
-                <tr><td>8</td><td>レジャー</td><td>0</td><td><a href="https://www.city.kodaira.tokyo.jp/kurashi/060/060905.html" target=”_blank”>グリーンロード</a></td><td>走れる、花見がみれる</td></tr>
-                <tr><td>9</td><td>グルメ</td><td>0</td><td>嘉悦大学</a></td><td>ビワ</td></tr>
-                <tr><td>10</td><td>グルメ</td><td>0</td><td>小金井公園</a></td><td>ドングリが食べられる</td></tr>
-                <tr><td>11</td><td>グルメ</td><td>0</td><td>小金井公園</a></td><td>水飲み放題</td></tr> -->
-                <!-- loop test -->
+
                 {%if len != 0%}
                   {%for row in data%}
                     <tr>
@@ -59,6 +117,57 @@
             </tbody>
           </table>
         </div>
+-->
+
+<!--ここからはカードに関する記述です。-->
+
+    <div class= "columns is-mobile is-gapless is-multiline"><!--この親コラムにしたがってコラムをfor文で回したいため、これ以下で宣言する。--><!--gaplessは空白詰め、今回は背景色隠し-->
+      {%if len != 0%}
+        {%for row in data%}
+
+      <div class="column is-4">
+        <div class="card">
+          <div class="card-image">
+            <figure class="image is-4by3">
+              <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image"><!--ここに画像データが入ると良きかと-->
+            </figure>
+          </div>
+
+          <div class="card-content">
+            <div class="media">
+              <div class="media-left">
+                <figure class="image is-48x48">
+                  <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image"><!--この枠は...MK3のロゴを入れたいね-->
+                </figure>
+              </div>
+
+              <div class="media-content">
+                {%for value in row %}
+                <p class="title is-4">・{{value}}</p>
+                {%endfor%}
+                <p class="subtitle is-6">@MK3</p>
+              </div>
+            </div>
+
+            <div class="content">
+              上から
+              ・ジャンル
+              ・金額
+              ・場所
+              ・出来る事
+              の順です。
+            <!--  <a href="#">#css</a> <a href="#">#responsive</a>-->
+              <br>
+              <time datetime="2016-1-1">00:00 PM - 1 Jan 2020</time>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    {%endfor%}
+  {%endif%}
     </div>
-  </body>
+
+</body>
+
 </html>

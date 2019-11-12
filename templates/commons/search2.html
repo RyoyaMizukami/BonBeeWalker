@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="../../static/css/styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.1.2/css/bulma.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
     <title>みんなで作るボンビーウォーカー!!!</title>
   </head>
@@ -14,8 +14,8 @@
         <img src="/static/images/bonbeelogo.png" width="200" height="50">
       </a>
     </div>
-
-    <!-- <div id="navbarBasicExample" class="navbar-menu">
+  <!--
+     <div id="navbarBasicExample" class="navbar-menu">
       <div class="navbar-start">
         <a class="navbar-item" href="{{url_for('search2')}}">
           予算で検索
@@ -26,9 +26,26 @@
         </a>
       </div>
     </dixv>
-   -->
+  -->
  </nav>
 
+
+<!-- ここからは全画面表示してるコードです。未完成のため非表示
+ <section class="hero is-fullheight has-text-centered">
+     <div class="hero-body">
+       <div class="container">
+         <h1 class="title">
+           Fullheight title
+         </h1>
+         <h2 class="subtitle">
+           Fullheight subtitle
+         </h2>
+       </div>
+     </div>
+   </section>
+-->
+
+<!-- ここからは検索枠などのコードです-->
   <body class="index_bg">
     <div class="main_logo">
       <img src="/static/images/bonbeelogo.png" alt="bonbeewalker-logo" class="logo_size">
@@ -57,5 +74,8 @@
     {% if IsValue%}
      <font color="red" class="error_message">未入力です。値を入力してください。</font><br>
     {% endif %}
+
+
+
   </body>
 </html>

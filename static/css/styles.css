@@ -3,6 +3,8 @@ input[type=number]::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
+@charset "utf-8";
+@import "../node_modules/bulma/bulma.sass";
 
 #title {
   font-size: 25px;
@@ -38,11 +40,11 @@ tbody{
 }
 
 .nav_color{
-  background-color: #44CF8A;
+  background-color: #F0DDB6;
 }
 
 .index_bg{
-  background-color: #44CF8A;
+  background-color: #F0DDB6;
   height: 100vh;
 }
 
@@ -97,8 +99,3 @@ tbody{
   justify-content: center;
   font-size: 30px;
 }
-/*.parent {
-   display: -webkit-flex;
-   display: flex;
-   flex-wrap: wrap;
-}*/
