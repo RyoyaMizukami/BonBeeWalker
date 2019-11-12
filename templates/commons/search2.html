@@ -50,7 +50,7 @@
         <option value="トイレ">トイレ</option>
         <option value="デートスポット">デートスポット</option>
       </select>
-      <input type="number" size=100 name="budget" min="0" max="1000" class="wide_window" placeholder="0～1000円を入力！"　>
+      <input type="number" size=100 name="budget" min="0" max="1000" class="wide_window" placeholder="0～1000円を入力！">
       <!--<input type=submit value=検索する class="big_button">-->
       <input type=submit value=検索! class="button is-primary is-large">
     </form>
@@ -58,5 +58,8 @@
     {% if IsValue%}
      <font color="red" class="error_message">値を入力してね！</font><br>
     {% endif %}
+    <div class="register_link_box">
+      <a href="{{url_for('resister')}}" class="register_link">登録ページはこちら</a>
+    </div>
   </body>
 </html>
