@@ -36,23 +36,43 @@ def registration():
     print("test")
     if request.method == 'POST':
 
-        #place = request.form['place']　#場所についての部分がどうなるかわからなかった
+        place = "" #場所についての部分がどうなるかわからなかった
         type = request.form['type']
         num = request.form['num']
         cando = request.form['cando']
         registration = request.form['registration']
 
-        #print("place",place)　#上記コメント同様
+        print("place",place)#上記コメント同様
         print("type:",type)
         print("num:",num)
         print("can",cando)
+        #cur = get_connection().cursor()
+        #cur.execute('SELECT max(id) from zgundam;')
+        #row = cur.fetchone()
+        ##print(row)
+        #cur.close()
+        #id = row[0]
+        #id+=1
+        #id = 301
+        conn = get_connection()
+        cur = conn.cursor()
+        cur.execute('SELECT max(id) from zgundam;')
+        row = cur.fetchone()
+        id = row[0]
+        id+=1
+        cur.execute('INSERT INTO zgundam(id,type,money,place,cando) VALUES(%s, %s, %s, %s, %s);',(id,type,num,place,cando))
+        print(id)
+        cur.close()
+        conn.commit()
+        conn.close()
 
-     cur = get_connection().cursor()
-     cur.execute('INSERT INTO zgundam VALUES(id, type, num, place, cando)')
-     data = cur.fetchall()
-     cur.close()
-     get_connection().close()
-        return redirect("/search2")
+
+        #with get_connection() as conn:
+        #    with conn.cursor() as cur:
+        #        id=300
+        #        cur.execute('INSERT INTO zgundam(id,type,money,place,cando) VALUES(%s, %s, %s, %s, %s);',(id,type,num,place,cando))
+        #    conn.commit()
+        return render_template("commons/exit.html")
 
 @app.route('/search2')
 def search2():
@@ -90,24 +110,7 @@ def post():
             data = cur.fetchall()
             cur.close()
             get_connection().close()
-            return redirect("commns/search2")
-
-@app.route('/station', methods=['GET', 'POST'])
-def station():
-    IsValue = False
-    print("test_station")
-    if request.method == 'POST':
-       type = request.form['type']
-       print(type)
-       if not type:
-         IsValue = True
-         return render_template('commons/search.html', IsValue = IsValue)
-       cur = get_connection().cursor()
-       cur.execute('SELECT type,money,place,cando FROM zgundam WHERE type LIKE %s ORDER BY type ASC', (type,))
-       data = cur.fetchall()
-       cur.close()
-       get_connection().close()
-       return render_template('index.html', type = type, data = data, len = len(data))
+        return render_template('index.html', budget = budget, type = type, data = data, len = len(data))
 
 if __name__ == "__main__":
     app.debug = True
