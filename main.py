@@ -26,10 +26,33 @@ def search():
     IsValue = False
     menu = create_pulldown_menu()
     print(menu)
-    return render_template('commons/search2.html', menu = menu, IsValue = IsValue)
+    return render_template('commons/registration.html', menu = menu, IsValue = IsValue)
 
 @app.route('/result')
 
+@app.route('/test',methods=['GET', 'POST'])
+def registration():
+    IsValue = False
+    print("test")
+    if request.method == 'POST':
+
+        #place = request.form['place']　#場所についての部分がどうなるかわからなかった
+        type = request.form['type']
+        num = request.form['num']
+        cando = request.form['cando']
+        registration = request.form['registration']
+
+        #print("place",place)　#上記コメント同様
+        print("type:",type)
+        print("num:",num)
+        print("can",cando)
+
+     cur = get_connection().cursor()
+     cur.execute('INSERT INTO zgundam VALUES(id, type, num, place, cando)')
+     data = cur.fetchall()
+     cur.close()
+     get_connection().close()
+        return redirect("/search2")
 
 @app.route('/search2')
 def search2():
@@ -67,8 +90,7 @@ def post():
             data = cur.fetchall()
             cur.close()
             get_connection().close()
-
-        return render_template('index.html', budget = budget, type = type, data = data, len = len(data))
+            return redirect("commns/search2")
 
 @app.route('/station', methods=['GET', 'POST'])
 def station():
