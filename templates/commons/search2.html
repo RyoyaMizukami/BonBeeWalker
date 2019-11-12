@@ -55,8 +55,11 @@
       <input type=submit value=検索! class="button is-primary is-large">
     </form>
     </div>
-    {% if IsValue%}
+    {% if IsValue %}
      <font color="red" class="error_message">値を入力してね！</font><br>
+    {% endif %}
+    {% if IsRegistration %}
+     <font color="red" class="error_message">ボンビースポットの登録完了！</font><br>
     {% endif %}
     <div class="register_link_box">
       <a href="{{url_for('resister')}}" class="register_link">登録ページはこちら</a>

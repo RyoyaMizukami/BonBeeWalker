@@ -16,5 +16,24 @@
       {% endif %}
       <p><input type=submit value=検索する></p>
     </form>
+
+    <form action="/station" method="post">
+      <div>
+           <p>ジャンル</p>
+          <select id="s_type" name="type">
+              <option value="">選択してください</option>
+              <option value="休憩">休憩</option>
+              <option value="レジャー・スポーツ">レジャー・スポーツ</option>
+              <option value="娯楽">娯楽</option>
+              <option value="グルメ">グルメ</option>
+              <option value="ショッピング">ショッピング</option>
+              <option value="パワースポット">パワースポット</option>
+              <option value="トイレ">トイレ</option>
+              <option value="デートスポット">デートスポット</option>
+          </select>
+      </div>
+      <div class="btn_area">
+          <p><input type="submit" name="btn_confirm" value="検索する"></p>
+    </form>
   </body>
 </html>

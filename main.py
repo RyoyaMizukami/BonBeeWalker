@@ -68,19 +68,35 @@ def post():
         cur.close()
         get_connection().close()
 
-    return render_template('index.html', budget = budget, type = type, data = data, len = len(data))
+    return render_template('index.html', budget = budget, type = type, data = data, len = len(data), placeID = "ChIJS4HJ7-PlGGARueQWOdCD_TA", API_key = API_key)
 
 @app.route('/resister_post', methods=['POST'])
 def registing():
     type = request.form['type']
     money = request.form['money']
-    placeID = request.form['placeID']
+    #placeID = request.form['placeID']
+    place = request.form['place']
     cando = request.form['cando']
 
-    if type and money and placeID and cando:
-        print(type, money, placeID, cando)
+    if type and money and place and cando:
+        print(type, money, place, cando)
         IsValue = False
-        return render_template('commons/search2.html', IsValue = IsValue)
+
+        conn = get_connection()
+        cur = conn.cursor()
+        cur.execute('SELECT max(id) from zgundam;')
+        id = cur.fetchone()[0]
+        print(id)
+        id += 1
+        print(id)
+        cur.execute('INSERT INTO zgundam(id, type, money, place, cando) VALUES(%s, %s, %s, %s, %s);', (id, type, money, place, cando))
+        cur.close()
+        conn.commit()
+        conn.close()
+
+        IsRegistration = True
+
+        return render_template('commons/search2.html', IsValue = IsValue, IsRegistration = IsRegistration)
     else:
         IsValue = True
         return render_template('commons/resister.html', IsValue = IsValue, API_key = API_key)
