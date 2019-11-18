@@ -112,6 +112,11 @@ tbody{
   color: red;
 }
 
+.return_moji{
+  font-size: 30px;
+  font-family:Verdana, "ＭＳ Ｐゴシック", sans-serif;
+}
+
 /*.parent {
    display: -webkit-flex;
    display: flex;

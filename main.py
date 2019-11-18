@@ -22,6 +22,10 @@ def create_pulldown_menu():
 def index():
     return render_template('index.html', len = 0, data = [])
 
+@app.route('/index2')
+def index2():
+    return render_template('index2.html')
+
 @app.route('/')
 def search():
     IsValue = False
