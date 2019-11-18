@@ -7,6 +7,7 @@
     <!-- scriptタグはサイトに動きを与えるjsを呼び出すタグです。 -->
     <!-- <script type="text/javascript" src="/static/js/gmap_api_test.js"></script> -->
     <!-- linkタグはサイトの見た目を変えることが出来るcssを呼び出すタグです。 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.1.2/css/bulma.css">
     <link rel="stylesheet" href="/static/css/res_styles.css">
     <!-- titleタグはページの名前を宣言するタグです。 -->
     <title>みんなで作るボンビーウォーカー！ - 登録ページ</title>
@@ -15,6 +16,9 @@
 
   <!-- bodyタグでは、「見せたい」中身を書きます。文字通りWebページの「身体」です。 -->
   <body>
+    <a class="navbar-item" href={{url_for('search2')}}>
+      <img src="/static/images/bonbeelogo.png" width="200" height="50">
+    </a>
     <!-- タイトル表示を司る箇所。divタグはただの箱。spanも言ってしまえば箱。pタグも改行してくれる箱。
          文字を表示したいって話ならこれでいいはず。 -->
     <div class="title_box">
@@ -89,7 +93,6 @@
                  class="place_window"
                  placeholder="地名・店名など"></p>
         </div>
-
 
         <p><span class="item_heading">できたことを入力しよう！(60文字以内)</span></p>
         <div class="cando_input">

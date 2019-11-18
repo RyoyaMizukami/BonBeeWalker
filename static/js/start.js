@@ -1,4 +1,4 @@
-var choice1;
+var choice1="娯楽";
 var choice2;
 var circle_list = document.getElementsByClassName("type_Circles");
 var money_list = document.getElementsByClassName("money_Circles");
@@ -18,19 +18,55 @@ function fadeinMoney(){
     money_list[i].classList.add("fadeIn");
     money_list[i].style.display = "block";
   }
+
+  console.log(choice1, choice2);
+
+  document.getElementById("0300C").onclick = function(){
+    var list = this.classList;
+
+    list.add("animated");
+    list.add("fadeOut");
+    choice2 = 300;
+    execPost(choice1, choice2);
+  }
+
+  document.getElementById("300700C").onclick = function(){
+    var list = this.classList;
+
+    list.add("animated");
+    list.add("fadeOut");
+    choice2 = 700;
+    execPost(choice1, choice2);
+  }
+
+  document.getElementById("7001000C").onclick = function(){
+    var list = this.classList;
+
+    list.add("animated");
+    list.add("fadeOut");
+    choice2 = 1000;
+    execPost(choice1, choice2);
+  }
 }
 
 function execPost(type, money){
+  var form = document.createElement('form');
   form.setAttribute("action", "/post");
   form.setAttribute("method", "post");
   form.style.display = "none";
   document.body.appendChild(form);
 
-  if (data !== undefined){
-    var input = document.createElement('input');
-    input.setAttribute('type', type);
-    input.setAttribute('budget', money);
-    }
+  var input1 = document.createElement('input');
+  input1.setAttribute('type', 'hidden');
+  input1.setAttribute('name', 'budget');
+  input1.setAttribute('value', money);
+  form.appendChild(input1);
+
+  var input2 = document.createElement('input');
+  input2.setAttribute('type', 'hidden');
+  input2.setAttribute('name', 'type');
+  input2.setAttribute('value', type);
+  form.appendChild(input2);
 
    form.submit();
 }
@@ -43,7 +79,7 @@ document.getElementById("bC").onclick = function(){
   choice1 = "休憩";
 
   allDelete();
-  fadein_money();
+  fadeinMoney();
 }
 
 document.getElementById("dsC").onclick = function(){
@@ -54,7 +90,7 @@ document.getElementById("dsC").onclick = function(){
   choice1 = "デートスポット";
 
   allDelete();
-  fadein_money();
+  fadeinMoney();
 }
 
 document.getElementById("hC").onclick = function(){
@@ -65,7 +101,7 @@ document.getElementById("hC").onclick = function(){
   choice1 = "娯楽";
 
   allDelete();
-  fadein_money();
+  fadeinMoney();
 }
 
 document.getElementById("pC").onclick = function(){
@@ -76,7 +112,7 @@ document.getElementById("pC").onclick = function(){
   choice1 = "パワースポット";
 
   allDelete();
-  fadein_money();
+  fadeinMoney();
 }
 
 document.getElementById("shC").onclick = function(){
@@ -87,7 +123,7 @@ document.getElementById("shC").onclick = function(){
   choice1 = "ショッピング";
 
   allDelete();
-  fadein_money();
+  fadeinMoney();
 }
 
 document.getElementById("tC").onclick = function(){
@@ -98,7 +134,7 @@ document.getElementById("tC").onclick = function(){
   choice1 = "トイレ";
 
   allDelete();
-  fadein_money();
+  fadeinMoney();
 }
 
 document.getElementById("gC").onclick = function(){
@@ -109,7 +145,7 @@ document.getElementById("gC").onclick = function(){
   choice1 = "グルメ";
 
   allDelete();
-  fadein_money();
+  fadeinMoney();
 }
 
 document.getElementById("spC").onclick = function(){
@@ -120,26 +156,5 @@ document.getElementById("spC").onclick = function(){
   choice1 = "レジャー・スポーツ";
 
   allDelete();
-  fadein_money();
-}
-
-document.getElementById("0300C").onclick = function(){
-  list.add("animated");
-  list.add("fadeOut");
-  choice2 = 300;
-  execPost(choice1, choice2);
-}
-
-document.getElementById("300700C").onclick = function(){
-  list.add("animated");
-  list.add("fadeOut");
-  choice2 = 700;
-  execPost(choice1, choice2);
-}
-
-document.getElementById("7001000C").onclick = function(){
-  list.add("animated");
-  list.add("fadeOut");
-  choice2 = 1000;
-  execPost(choice1, choice2);
+  fadeinMoney();
 }
