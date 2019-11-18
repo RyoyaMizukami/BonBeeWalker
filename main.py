@@ -27,7 +27,7 @@ def search():
     IsValue = False
     menu = create_pulldown_menu()
     print(menu)
-    return render_template('commons/search2.html', menu = menu, IsValue = IsValue)
+    return render_template('index2.html', menu = menu, IsValue = IsValue)
 
 @app.route('/resister')
 def resister():
