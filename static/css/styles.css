@@ -33,7 +33,7 @@ tbody{
 .budget{
   font-size: 30px;
   font-family: "メイリオ", sans-serif;
-  color: white;
+  color: black;
   font-weight: bold;
 }
 
@@ -42,7 +42,7 @@ tbody{
 }
 
 .index_bg{
-  background-color: #44CF8A;
+  background-image: linear-gradient(135deg, #f5f7fa, #c3cfe2, #f5f7fa, #c3cfe2);
   height: 100vh;
 }
 
@@ -110,6 +110,11 @@ tbody{
   justify-content: center;
   font-size: 30px;
   color: red;
+}
+
+.return_moji{
+  font-size: 30px;
+  font-family:Verdana, "ＭＳ Ｐゴシック", sans-serif;
 }
 
 /*.parent {
