@@ -38,10 +38,17 @@ footer{
   justify-content: center;
 }
 
-.Circles{
+.type_Circles{
   width: 230px;
   height: 250px;
   padding: 10px;
+}
+
+.money_Circles{
+  width: 200px;
+  height: 250px;
+  padding: 10px;
+  display: none;
 }
 
 .Lets_Start_box{
@@ -83,4 +90,9 @@ h2{
 
 .moji_body{
   font-size: 40px;
+}
+
+.caution{
+  font-size: 40px;
+  color: red;
 }
