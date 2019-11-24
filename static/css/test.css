@@ -10,7 +10,6 @@ html,body{
 footer{
   background-color: #FFF;
   width: 1125px;
-  height:
 }
 
 .title_logo_box{
@@ -23,6 +22,36 @@ footer{
 .title_logo{
   height: 50%;
   width: 105%;
+}
+
+.register_box{
+  position: absolute;
+  top: 10px;
+  left: 780px;
+  width: 100%;
+}
+
+.register_moji{
+  font-size: 25px;
+}
+
+.form_box{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.type_select{
+  font-size: 50px;
+  margin: 15px;
+  text-align: center;
+}
+
+.budget_select{
+  font-size: 50px;
+  margin: 15px;
+  text-align: center;
 }
 
 .Circle_box{

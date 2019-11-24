@@ -16,6 +16,10 @@
     <img src="/static/images/bonbee_logo.svg" class="title_logo">
    </div>
 
+   <div class="register_box">
+     <p><a href="{{url_for('register')}}" class="register_moji">ボンビースポットを共有しよう！</a></p>
+   </div>
+
    <!-- ◯をたくさん出している -->
    <div id="startCircle" class="Circle_box">
      <div class="Circle_border">
@@ -32,6 +36,35 @@
        <img src="/static/images/700-1000yen.svg" id="7001000C" class="200yen money_Circles">
      </div>
    </div>
+
+   <!-- ジャンル・金額選択
+   <form class="form_box" action="/post" method="post">
+     <select class="type_select" name="type">
+       <option value="">ジャンルを選択！</option>
+       <option value="休憩">休憩</option>
+       <option value="レジャー・スポーツ">レジャー・スポーツ</option>
+       <option value="娯楽">娯楽</option>
+       <option value="グルメ">グルメ</option>
+       <option value="ショッピング">ショッピング</option>
+       <option value="パワースポット">パワースポット</option>
+       <option value="トイレ">トイレ</option>
+       <option value="デートスポット">デートスポット</option>
+     </select>
+     <select class="budget_select" name="budget">
+       <option value="">予算を選択！</option>
+       <option value=0>0円</option>
+       <option value=100>100円</option>
+       <option value=200>200円</option>
+       <option value=300>300円</option>
+       <option value=400>400円</option>
+       <option value=500>500円</option>
+       <option value="600">600円</option>
+       <option value="700">700円</option>
+       <option value="800">800円</option>
+       <option value="900">900円</option>
+       <option value="1000">1000円</option>
+     </select>
+   </form> -->
 
  <!-- ◯の下の文字を出している -->
  <div class="Lets_Start_box">

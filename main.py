@@ -42,6 +42,10 @@ def search2():
     IsValue = False
     return render_template('commons/search2.html', IsValue = IsValue)
 
+@app.route('/register')
+def register():
+    return render_template('commons/resister.html')
+
 @app.route('/post', methods=['POST'])
 def post():
     IsValue = False
