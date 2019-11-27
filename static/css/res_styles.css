@@ -9,7 +9,7 @@ html, body{
   width: 100%;
   margin: auto auto;
   padding: 0;
-  background-color: #44CF8A;
+  background-image: linear-gradient(135deg, #f5f7fa, #c3cfe2, #f5f7fa, #c3cfe2);
 }
 
 .form_box{
