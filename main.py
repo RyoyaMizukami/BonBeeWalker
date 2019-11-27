@@ -104,7 +104,7 @@ def registing():
 
         IsRegistration = True
 
-        return render_template('commons/search2.html', IsValue = IsValue, IsRegistration = IsRegistration)
+        return render_template('index2.html', IsValue = IsValue, IsRegistration = IsRegistration)
     else:
         IsValue = True
         return render_template('commons/resister.html', IsValue = IsValue, API_key = API_key)
