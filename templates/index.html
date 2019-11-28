@@ -1,62 +1,114 @@
 <!DOCTYPE html>
 <html lang="jp" dir="ltr">
-  <head>
+ <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" type="text/css" href="../static/css/styles.css"/>
-    <title>みんなで作るボンビーウォーカー！</title>
-  </head>
+    <link rel="stylesheet" href="/static/js/node_modules/animate.css/animate.min.css">
+    <link rel="stylesheet" href="static/css/test.css">
+    <script src="/static/js/node_modules/animejs/lib/anime.min.js"></script>
+    <meta name="viewport" content="width=device-width">
+    <title>みんなで作る！ボンビーウォーカー！！</title>
+ </head>
 
-  <body>
-    <div class="parent">
-        <div id="title">
-          <h1>みんなで作るボンビーウォーカー!</h1>
-        </div>
+ <body>
 
-        <div id = "introduction">
-          <h1>What's ボンビーウォーカー？？？</h1>
-          <p>これは<strong>極貧大学生<strong>向けのアプリです。</p>
-          <p>お金を持っている人はもうちょっと待ってね☆</p>
-          <a href= {{url_for('search')}}>予算入力はこちら</a>
-        </div>
+   <!-- タイトルロゴを呼び出している -->
+   <div class="animated bounceInDown title_logo_box">
+    <img src="/static/images/bonbee_logo.svg" class="title_logo">
+   </div>
 
-        <div id = "main_table">
-          <table border="1" align="center">
-              <thead>
-                <tr>
-                  <th>ジャンル</th><th>金額</th><th>場所</th><th>出来ること</th>
-                </tr>
-              </thead>
+   <div class="register_box">
+     <p><a href="{{url_for('register')}}" class="register_moji">ボンビースポットを共有しよう！</a></p>
+   </div>
 
-<!--              <form action="/result" method="POST">
-                <p>予算を入力してください。<input type="text" name="item" size="30"></p>
-                <p><input type="submit" value="検索"></p>
-              </form> -->
+<!-- 工事現場
+   <div class="form_box">
+     <div class="form_border">
+       <select class="type_select" name="type">
+          <option value=""></option>
+       </select>
+     </div>
+   </div> -->
 
-              <tbody>
-               <!-- <tr><td>{{ data[0] }} </td><td>{{ data[1] }}</td><td>{{ data[2] }}</td><td>{{ data[3] }}</td><td>{{ data[4] }}</td></tr>
-                <tr><td>2</td><td>休憩</td><td>0</td><td>嘉悦大学</td><td>ラウンジで寝れる</td></tr>
-                <tr><td>3</td><td>休憩</td><td>0</td><td>小金井公園</td><td>休めるね</td></tr>
-                <tr><td>4</td><td>休憩</td><td>0</td><td>嘉悦大学（北口）</a></td><td>ベンチで座れる</td></tr>
-                <tr><td>5</td><td>レジャー</td><td>0</td><td>嘉悦大学</a></td><td>聴講</td></tr>
-                <tr><td>6</td><td>レジャー</td><td>0</td><td>花小金井ひょうたん池公園</a></td><td>プール</td></tr>
-                <tr><td>7</td><td>レジャー</td><td>0</td><td>小金井公園</a></td><td>アスレチック</td></tr>
-                <tr><td>8</td><td>レジャー</td><td>0</td><td><a href="https://www.city.kodaira.tokyo.jp/kurashi/060/060905.html" target=”_blank”>グリーンロード</a></td><td>走れる、花見がみれる</td></tr>
-                <tr><td>9</td><td>グルメ</td><td>0</td><td>嘉悦大学</a></td><td>ビワ</td></tr>
-                <tr><td>10</td><td>グルメ</td><td>0</td><td>小金井公園</a></td><td>ドングリが食べられる</td></tr>
-                <tr><td>11</td><td>グルメ</td><td>0</td><td>小金井公園</a></td><td>水飲み放題</td></tr> -->
-                <!-- loop test -->
-                {%if len != 0%}
-                  {%for row in data%}
-                    <tr>
-                    {%for value in row %}
-                      <td>{{value}}</td>
-                    {%endfor%}
-                    </tr>
-                  {%endfor%}
-                {%endif%}
-            </tbody>
-          </table>
-        </div>
-    </div>
-  </body>
+   <!-- ◯をたくさん出している -->
+   <div id="startCircle" class="Circle_box">
+     <div class="Circle_border">
+       <img src="/static/images/breakC.svg" id="bC" class="breakC type_Circles">
+       <img src="/static/images/datingspotC.svg" id="dsC" class="datingspotC type_Circles">
+       <img src="/static/images/hobbyC.svg" id="hC" class="hobbyC type_Circles">
+       <img src="/static/images/powerspotC.svg" id="pC" class="powerspotC type_Circles">
+       <img src="/static/images/shoppingC.svg" id="shC" class="shoppingC type_Circles">
+       <img src="/static/images/toiretC.svg" id="tC" class="toiretC type_Circles">
+       <img src="/static/images/gourmetC.svg" id="gC" class="gourmetC type_Circles">
+       <img src="/static/images/sportsC.svg" id="spC" class="sportsC type_Circles">
+       <img src="/static/images/0-300yen.svg" id="0300C" class="0yen money_Circles">
+       <img src="/static/images/300-700yen.svg" id="300700C" class="100yen money_Circles">
+       <img src="/static/images/700-1000yen.svg" id="7001000C" class="200yen money_Circles">
+     </div>
+   </div>
+
+   <!-- ジャンル・金額選択
+   <form class="form_box" action="/post" method="post">
+     <select class="type_select" name="type">
+       <option value="">ジャンルを選択！</option>
+       <option value="休憩">休憩</option>
+       <option value="レジャー・スポーツ">レジャー・スポーツ</option>
+       <option value="娯楽">娯楽</option>
+       <option value="グルメ">グルメ</option>
+       <option value="ショッピング">ショッピング</option>
+       <option value="パワースポット">パワースポット</option>
+       <option value="トイレ">トイレ</option>
+       <option value="デートスポット">デートスポット</option>
+     </select>
+     <select class="budget_select" name="budget">
+       <option value="">予算を選択！</option>
+       <option value=0>0円</option>
+       <option value=100>100円</option>
+       <option value=200>200円</option>
+       <option value=300>300円</option>
+       <option value=400>400円</option>
+       <option value=500>500円</option>
+       <option value="600">600円</option>
+       <option value="700">700円</option>
+       <option value="800">800円</option>
+       <option value="900">900円</option>
+       <option value="1000">1000円</option>
+     </select>
+   </form> -->
+
+ <!-- ◯の下の文字を出している -->
+ <div class="Lets_Start_box">
+   <p><span class="StartMoji">行きたいところをタップして、ツアースタート！</span></p>
+ </div>
+
+ <!-- 線を出している -->
+ <div class="sen_box">
+   <p></p>
+ </div>
+
+ <!-- 紹介文を出している -->
+ <div class="moji_box">
+   <p><h1 class="animated fadeIn">ボンビーウォーカーとは?</h1></p>
+   <p><span class="moji_body">「みんなで作る！ボンビーウォーカー」は</span></p>
+   <p><span class="moji_body">お金のない人でも楽しめる場所を案内するアプリ！</span></p>
+   <p><span class="moji_body">今行きたい場所ややりたいこと、</span></p>
+   <p><span class="moji_body">予算を教えてくれたらそんな場所を教えるよ！</span></p>
+ </div>
+
+ <div class="sen_box">
+   <p></p>
+ </div>
+
+ <div class="moji_box">
+   <p><h1 class="animated fadeIn">どうやるの？</h1></p>
+   <p><h2>探す</h2></p>
+   <p><span class="moji_body">ページ上部に出ているボールをタップしてみよう！</span></p>
+   <p><span class="moji_body">それぞれのボールにはやりたいことや</span></p>
+   <p><span class="moji_body">予算についての質問が書いてあるよ。</span></p>
+   <p><span class="moji_body">全ての質問に答えてくれたら、</span></p>
+   <p><span class="moji_body">オススメのボンビースポットを紹介するよ！</span></p>
+   <p><span class="caution">※現在は花小金井地区にのみ対応しております。</span></p>
+ </div>
+
+ <script type="text/javascript" src="/static/js/start.js"></script>
+ </body>
 </html>

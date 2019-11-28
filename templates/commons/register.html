@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="jp" dir="ltr">
+  <!-- headタグは、CSSやjs(javascript)を呼び出したり、titleタグでページの名前を宣言したりするタグです。
+       詳細は省きますが、他にも「見た目には見せない」要素を置く場所です（多分）。-->
+  <head>
+    <meta charset="utf-8">
+    <!-- scriptタグはサイトに動きを与えるjsを呼び出すタグです。 -->
+    <!-- <script type="text/javascript" src="/static/js/gmap_api_test.js"></script> -->
+    <!-- linkタグはサイトの見た目を変えることが出来るcssを呼び出すタグです。 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.1.2/css/bulma.css">
+    <link rel="stylesheet" href="/static/css/res_styles.css">
+    <!-- titleタグはページの名前を宣言するタグです。 -->
+    <title>みんなで作るボンビーウォーカー！ - 登録ページ</title>
+  </head>
+
+  <!-- bodyタグでは、「見せたい」中身を書きます。文字通りWebページの「身体」です。 -->
+  <body>
+    <a class="navbar-item" href={{url_for('index2')}}>
+      <img src="/static/images/bonbeelogo.png" width="200" height="50">
+    </a>
+    <!-- タイトル表示を司る箇所。divタグはただの箱。spanも言ってしまえば箱。pタグも改行してくれる箱。
+         文字を表示したいって話ならこれでいいはず。 -->
+    <div class="title_box">
+      <p><span class="title_font">ボンビースポット 登録ページ</span></p>
+    </div>
+
+    {% if IsValue%}
+      <p><font color="red" class="error_message">全ての項目を記入してね！</font></p>
+    {% endif %}
+
+    <!-- ジャンル、金額、場所、出来ること　の入力を司る箇所。ここで初めてformタグが登場する。
+         formタグには、actionとmethodを入れる必要があるがここには基本的に"/post"と"post"を入れれば良い。
+         postとgetの違いについては調べましょう。 -->
+    <div class="form_box">
+      <form action="/register_post" method="post">
+
+        <div class="type_input">
+          <p><span class="item_heading">ジャンルを選択！</span></p>
+          <div class="type_select">
+          <select class="pulldown_menu" name="type">
+            <option value=""></option>
+      			<option value="休憩">休憩</option>
+      			<option value="レジャー・スポーツ">レジャー・スポーツ</option>
+      			<option value="娯楽">娯楽</option>
+      			<option value="グルメ">グルメ</option>
+            <option value="ショッピング">ショッピング</option>
+            <option value="パワースポット">パワースポット</option>
+            <option value="トイレ">トイレ</option>
+            <option value="デートスポット">デートスポット</option>
+          </select>
+          </div>
+        </div>
+
+        <p><span class="item_heading">値段は？(1000円以下で教えてね！)</span></p>
+        <div class="money_input">
+          <input type="number"
+                 name="money"
+                 min="0"
+                 max="1000"
+                 class="money_window">
+          <span class="yen">円</span>
+        </div>
+
+<!-- カードが実装できないってことはここは全部凍結されるってことなんですね～ -->
+    <!--    <p><span class="item_heading">できた場所を検索して場所IDをコピペしよう！</span></p>
+        <div class="map_view"> -->
+          <!-- この部分はGoogle Maps APIの呼び出し。js読むと理解できます。 -->
+        <!--  <div style="display: none">
+            <input id="pac-input"
+                   class="controls"
+                   type="text"
+                   placeholder="地名・店名を入力">
+          </div>
+          <div id="map"></div> -->  <!--地図を表示する div 要素-->
+      <!--    <div id="infowindow-content">
+            <span id="place-name" class="title"></span><br>
+            <strong>場所ID:</strong> <span id="place-id"></span><br>
+            <span id="place-address"></span>
+          </div>
+        </div>
+        <div class="place_input">
+          <p><input type="text"
+                 name="placeID"
+                 class="place_window"
+                 placeholder="例)ChIJg4WsB-TlGGARxu8kOVsRRd4"></p>
+        </div> -->
+
+        <p><span class="item_heading">場所を入力しよう！</span></p>
+        <div class="place_input">
+          <p><input type="text"
+                 name="place"
+                 class="place_window"
+                 placeholder="地名・店名など"></p>
+        </div>
+
+        <p><span class="item_heading">できたことを入力しよう！(60文字以内)</span></p>
+        <div class="cando_input">
+          <p><input type="text"
+                 name="cando"
+                 class="cando_window"
+                 maxlength="60"></p>
+        </div>
+
+        <div class="submit_button_box">
+          <input type="submit" value="登録！" class="submit_button">
+        </div>
+      </form>
+    </div>
+  </body>
+  <script src="https://maps.googleapis.com/maps/api/js?key={{API_key}}&callback=initMap&libraries=places" async defer type="text/javascript"></script>
+</html>
