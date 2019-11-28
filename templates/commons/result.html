@@ -2,14 +2,69 @@
 <html lang="jp" dir="ltr">
   <head>
     <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="../static/css/styles.css"/>
     <title>みんなで作るボンビーウォーカー！ - 検索結果ページ</title>
   </head>
-  <header>
 
-  </header>
-  <body class="index_bg">
-    <div class="">
-
+  <nav class="navbar is-primary" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+      <a class="navbar-item" href={{url_for('index')}}>
+        <span class="return_moji">←</span>
+      </a>
     </div>
+
+  <body class="index_bg">
+    <div class="result_in_money">
+      {% if budget%}
+      <p class="budget">予算{{budget}}円で出来ることはこれ！</p>
+      {% else %}
+      <p class="budget">ジャンル[{{type}}]で出来ることはこれ！</p>
+      {% endif %}
+    </div>
+        <div id = "main_table">
+          <table border="1" align="center">
+              <thead>
+                <tr>
+                  <th>ジャンル</th><th>金額</th><th>場所</th><th>出来ること</th>
+                </tr>
+              </thead>
+
+<!--              <form action="/result" method="POST">
+                <p>予算を入力してください。<input type="text" name="item" size="30"></p>
+                <p><input type="submit" value="検索"></p>
+              </form> -->
+
+              <tbody>
+               <!-- <tr><td>{{ data[0] }} </td><td>{{ data[1] }}</td><td>{{ data[2] }}</td><td>{{ data[3] }}</td><td>{{ data[4] }}</td></tr>
+                <tr><td>2</td><td>休憩</td><td>0</td><td>嘉悦大学</td><td>ラウンジで寝れる</td></tr>
+                <tr><td>3</td><td>休憩</td><td>0</td><td>小金井公園</td><td>休めるね</td></tr>
+                <tr><td>4</td><td>休憩</td><td>0</td><td>嘉悦大学（北口）</a></td><td>ベンチで座れる</td></tr>
+                <tr><td>5</td><td>レジャー</td><td>0</td><td>嘉悦大学</a></td><td>聴講</td></tr>
+                <tr><td>6</td><td>レジャー</td><td>0</td><td>花小金井ひょうたん池公園</a></td><td>プール</td></tr>
+                <tr><td>7</td><td>レジャー</td><td>0</td><td>小金井公園</a></td><td>アスレチック</td></tr>
+                <tr><td>8</td><td>レジャー</td><td>0</td><td><a href="https://www.city.kodaira.tokyo.jp/kurashi/060/060905.html" target=”_blank”>グリーンロード</a></td><td>走れる、花見がみれる</td></tr>
+                <tr><td>9</td><td>グルメ</td><td>0</td><td>嘉悦大学</a></td><td>ビワ</td></tr>
+                <tr><td>10</td><td>グルメ</td><td>0</td><td>小金井公園</a></td><td>ドングリが食べられる</td></tr>
+                <tr><td>11</td><td>グルメ</td><td>0</td><td>小金井公園</a></td><td>水飲み放題</td></tr> -->
+                <!-- loop test -->
+                {%if len != 0%}
+                  {%for row in data%}
+                    <tr>
+                    {%for value in row %}
+                      <td>{{value}}</td>
+                    {%endfor%}
+                    </tr>
+                  {%endfor%}
+                {%endif%}
+            </tbody>
+          </table>
+        </div>
+    </div>
+<!-- ここが墓場 -->
+<!--    <iframe width="600"
+            height="450"
+            frameborder="0" style="border:0"
+            src="https://www.google.com/maps/embed/v1/place?key={{API_key}}&q=place_id:{{placeID}}" allowfullscreen>
+</iframe> -->
   </body>
 </html>

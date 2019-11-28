@@ -51,7 +51,7 @@ function fadeinMoney(){
 
 function execPost(type, money){
   var form = document.createElement('form');
-  form.setAttribute("action", "/post");
+  form.setAttribute("action", "/searching");
   form.setAttribute("method", "post");
   form.style.display = "none";
   document.body.appendChild(form);

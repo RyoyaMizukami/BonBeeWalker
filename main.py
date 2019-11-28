@@ -1,13 +1,20 @@
 #using: utf-8
+# 色々引っ張ってきたり、定義したり
 from flask import Flask, render_template, session, redirect, url_for, escape, request
 import psycopg2
 import os
 app = Flask(__name__)
-API_key = os.environ.get('gmap_API')
+# ↓はGoogle Maps APIのAPIキーを定義してます。APIキーというのは鍵です。
+# API_key = os.environ.get('gmap_API')
 
+# データベースに接続する関数です。
 def get_connection():
     dsn = os.environ.get('DATABASE_URL')
     return psycopg2.connect(dsn)
+
+"""
+この関数はジャンルのプルダウンメニューの中身を自動で作れればいいよねって思って作ったんだけど、
+データの整形がめんどくさく感じてしまったので、放置されている。
 
 def create_pulldown_menu():
     cur = get_connection().cursor()
@@ -17,36 +24,21 @@ def create_pulldown_menu():
     cur.close()
     get_connection().close()
     return menu
+"""
 
-@app.route('/search')
-def index():
-    return render_template('index.html', len = 0, data = [])
-
-@app.route('/index2')
-def index2():
-    return render_template('index2.html')
-
+# 最初にアクセスされるページ
 @app.route('/')
-def search():
+def index():
     IsValue = False
-    menu = create_pulldown_menu()
-    print(menu)
-    return render_template('index2.html', menu = menu, IsValue = IsValue)
+    return render_template('index.html', IsValue = IsValue)
 
-@app.route('/resister')
-def resister():
-    return render_template('commons/resister.html', API_key = API_key)
-
-@app.route('/search2')
-def search2():
-    IsValue = False
-    return render_template('commons/search2.html', IsValue = IsValue)
-
+# 登録ページの表示
 @app.route('/register')
 def register():
-    return render_template('commons/resister.html')
+    return render_template('commons/register.html')
 
-@app.route('/post', methods=['POST'])
+# 検索の過程
+@app.route('/searching', methods=['POST'])
 def post():
     IsValue = False
 
@@ -55,8 +47,8 @@ def post():
     print(budget)
     print(type)
     if not type and not budget:
-        IsValue = True
-        return render_template('commons/search2.html', IsValue = IsValue)
+        IsValue = Truec
+        return render_template('index.html', IsValue = IsValue)
 
     cur = get_connection().cursor()
 
@@ -76,9 +68,10 @@ def post():
         cur.close()
         get_connection().close()
 
-    return render_template('index.html', budget = budget, type = type, data = data, len = len(data), placeID = "ChIJS4HJ7-PlGGARueQWOdCD_TA", API_key = API_key)
+    return render_template('commons/result.html', budget = budget, type = type, data = data, len = len(data))
 
-@app.route('/resister_post', methods=['POST'])
+# 投稿の過程
+@app.route('/register_post', methods=['POST'])
 def registing():
     type = request.form['type']
     money = request.form['money']
@@ -104,10 +97,16 @@ def registing():
 
         IsRegistration = True
 
-        return render_template('index2.html', IsValue = IsValue, IsRegistration = IsRegistration)
+        return render_template('index.html', IsValue = IsValue, IsRegistration = IsRegistration)
     else:
         IsValue = True
-        return render_template('commons/resister.html', IsValue = IsValue, API_key = API_key)
+        return render_template('commons/register.html', IsValue = IsValue, API_key = API_key)
 
+# 各URL用の概要ページ
+@app.route('/result/<name>')
+def hello(name):
+    return render_template('commons/detail_template.html')
+
+# おまじない。これがないとHerokuで動かない。
 if __name__ == "__main__":
     app.run()
