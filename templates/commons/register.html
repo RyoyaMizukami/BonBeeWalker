@@ -11,12 +11,11 @@
     <link rel="stylesheet" href="/static/css/res_styles.css">
     <!-- titleタグはページの名前を宣言するタグです。 -->
     <title>みんなで作るボンビーウォーカー！ - 登録ページ</title>
-    <meta charset="utf-8">
   </head>
 
   <!-- bodyタグでは、「見せたい」中身を書きます。文字通りWebページの「身体」です。 -->
   <body>
-    <a class="navbar-item" href={{url_for('search2')}}>
+    <a class="navbar-item" href={{url_for('index2')}}>
       <img src="/static/images/bonbeelogo.png" width="200" height="50">
     </a>
     <!-- タイトル表示を司る箇所。divタグはただの箱。spanも言ってしまえば箱。pタグも改行してくれる箱。
@@ -33,7 +32,7 @@
          formタグには、actionとmethodを入れる必要があるがここには基本的に"/post"と"post"を入れれば良い。
          postとgetの違いについては調べましょう。 -->
     <div class="form_box">
-      <form action="/resister_post" method="post">
+      <form action="/register_post" method="post">
 
         <div class="type_input">
           <p><span class="item_heading">ジャンルを選択！</span></p>
