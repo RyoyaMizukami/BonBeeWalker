@@ -47,15 +47,19 @@
                 <tr><td>10</td><td>グルメ</td><td>0</td><td>小金井公園</a></td><td>ドングリが食べられる</td></tr>
                 <tr><td>11</td><td>グルメ</td><td>0</td><td>小金井公園</a></td><td>水飲み放題</td></tr> -->
                 <!-- loop test -->
-                {%if len != 0%}
-                  {%for row in data%}
+                {% if len != 0 %}
+                  {% for row in data %}
                     <tr>
-                    {%for value in row %}
-                      <td>{{value}}</td>
-                    {%endfor%}
+                    {% for i in range(row|length) %}
+                      {% if i != 3 %}
+                        <td>{{row[i]}}</td>
+                      {% else %}
+                        <td><a href={{url_for('detail', name=row[i])}}>詳細</a></td>
+                      {% endif %}
+                    {% endfor %}
                     </tr>
-                  {%endfor%}
-                {%endif%}
+                  {% endfor %}
+                {% endif %}
             </tbody>
           </table>
         </div>
