@@ -16,66 +16,63 @@
           <h1 class="title">
             <div class="column is-12">
               <div id = "title">
-            〇〇様　おかえりなさい
+            {{identity}}様　おかえりなさい
               </div>
             </div>
           </h1>
 
-          <h2 class="subtitle">
-            どこか
-          </h2>
+          <!--ここから投稿ボタン-->
+              <div class="create_share_button">
+                <a href="{{url_for('register')}}">
+                  <form action="/register" method="post">
+                  <input type="submit" value="ボンビースポットを投稿しよう！" class="button is-denger is-medium">
+                  <input type="hidden" name=identity value="{{identity}}">
+                  </form>
+                </a>
         </div>
       </div>
 　  </section>
-<!--ここから共有ボタン-->
-    <div class="create_share_button">
-      <a href="./commons/register.html" class="login_button">共有しよう！</a>
 
 
-<!--ここからの表記を使ってテーブルを作っていく
+<!--ここからの表記を使ってテーブルを作っていく-->
       <div id = "main_table">
         <table border="1" align="center">
             <thead>
               <tr>
-                <th>ジャンル</th><th>金額</th><th>場所</th><th>出来ること</th>
+                <th>番号</th><th>ジャンル</th><th>金額</th><th>場所</th><th>出来ること</th>
+                <th>削除</th>
+                <!--削除の枠は表示しない-->
               </tr>
             </thead>
 
--->
-
-<!--              <form action="/result" method="POST">
-              <p>予算を入力してください。<input type="text" name="item" size="30"></p>
-              <p><input type="submit" value="検索"></p>
-            </form> -->
 
             <tbody>
-             <!-- <tr><td>{{ data[0] }} </td><td>{{ data[1] }}</td><td>{{ data[2] }}</td><td>{{ data[3] }}</td><td>{{ data[4] }}</td></tr>
-              <tr><td>2</td><td>休憩</td><td>0</td><td>嘉悦大学</td><td>ラウンジで寝れる</td></tr>
-              <tr><td>3</td><td>休憩</td><td>0</td><td>小金井公園</td><td>休めるね</td></tr>
-              <tr><td>4</td><td>休憩</td><td>0</td><td>嘉悦大学（北口）</a></td><td>ベンチで座れる</td></tr>
-              <tr><td>5</td><td>レジャー</td><td>0</td><td>嘉悦大学</a></td><td>聴講</td></tr>
-              <tr><td>6</td><td>レジャー</td><td>0</td><td>花小金井ひょうたん池公園</a></td><td>プール</td></tr>
-              <tr><td>7</td><td>レジャー</td><td>0</td><td>小金井公園</a></td><td>アスレチック</td></tr>
-              <tr><td>8</td><td>レジャー</td><td>0</td><td><a href="https://www.city.kodaira.tokyo.jp/kurashi/060/060905.html" target=”_blank”>グリーンロード</a></td><td>走れる、花見がみれる</td></tr>
-              <tr><td>9</td><td>グルメ</td><td>0</td><td>嘉悦大学</a></td><td>ビワ</td></tr>
-              <tr><td>10</td><td>グルメ</td><td>0</td><td>小金井公園</a></td><td>ドングリが食べられる</td></tr>
-              <tr><td>11</td><td>グルメ</td><td>0</td><td>小金井公園</a></td><td>水飲み放題</td></tr> -->
-              <!-- loop test -->
-<!--
               {%if len != 0%}
                 {%for row in data%}
-                  <tr>
-                  {%for value in row %}
-                    <td>{{value}}</td>
-                  {%endfor%}
-                  </tr>
+               <tr>
+                 <td>{{row.id}}</td><td>{{row.type}} </td><td>{{row.money}}</td><td>{{row.place}}</td><td>{{row.cando}}</td>
+
+                   <td>
+                     <form action="/delete" method="post">
+                     <input type="submit" value="削除" class="button is-info is-small">
+                        <input type="hidden" name=delete_id value="{{row.id}}">
+                        <input type="hidden" name=delete_identity value="{{row.identity}}">
+                     </form>
+                   </td>
+               </tr>
                 {%endfor%}
+
+              {%else%}
+                <h1>まだ投稿がないよ〜！ボンビースポットを登録しよう！</h1>
               {%endif%}
-          </tbody>
+
+
+
+              </tbody>
         </table>
       </div>
 
--->
+
   </body>
 
 </html>
