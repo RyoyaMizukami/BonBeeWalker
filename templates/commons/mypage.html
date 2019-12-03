@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="jp" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="/static/js/node_modules/animate.css/animate.min.css">
+    <link rel="stylesheet" href="static/css/test.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.css">
+    <script src="/static/js/node_modules/animejs/lib/anime.min.js"></script>
+    <meta name="viewport" content="width=device-width">
+    <title>マイページ</title>
+  </head>
+  <body>
+    <section class="hero is-info">
+      <div class="hero-body">
+        <div class="container">
+          <h1 class="title">
+            <div class="column is-12">
+              <div id = "title">
+            {{identity}}様　おかえりなさい
+              </div>
+            </div>
+          </h1>
+
+          <!--ここから投稿ボタン-->
+              <div class="create_share_button">
+                <a href="{{url_for('register')}}">
+                  <form action="/register" method="post">
+                  <input type="submit" value="ボンビースポットを投稿しよう！" class="button is-denger is-medium">
+                  <input type="hidden" name=identity value="{{identity}}">
+                  </form>
+                </a>
+        </div>
+      </div>
+　  </section>
+
+
+<!--ここからの表記を使ってテーブルを作っていく-->
+      <div id = "main_table">
+        <table border="1" align="center">
+            <thead>
+              <tr>
+                <th>番号</th><th>ジャンル</th><th>金額</th><th>場所</th><th>出来ること</th>
+                <th>削除</th>
+                <!--削除の枠は表示しない-->
+              </tr>
+            </thead>
+
+
+            <tbody>
+              {%if len != 0%}
+                {%for row in data%}
+               <tr>
+                 <td>{{row.id}}</td><td>{{row.type}} </td><td>{{row.money}}</td><td>{{row.place}}</td><td>{{row.cando}}</td>
+
+                   <td>
+                     <form action="/delete" method="post">
+                     <input type="submit" value="削除" class="button is-info is-small">
+                        <input type="hidden" name=delete_id value="{{row.id}}">
+                        <input type="hidden" name=delete_identity value="{{row.identity}}">
+                     </form>
+                   </td>
+               </tr>
+                {%endfor%}
+
+              {%else%}
+                <h1>まだ投稿がないよ〜！ボンビースポットを登録しよう！</h1>
+              {%endif%}
+
+
+
+              </tbody>
+        </table>
+      </div>
+
+
+  </body>
+
+</html>
