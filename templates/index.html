@@ -3,33 +3,14 @@
  <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="/static/js/node_modules/animate.css/animate.min.css">
-    <link rel="stylesheet" href="static/css/test.css">
+    <link rel="stylesheet" href="static/css/index.css">
     <script src="/static/js/node_modules/animejs/lib/anime.min.js"></script>
     <meta name="viewport" content="width=device-width">
     <title>みんなで作る！ボンビーウォーカー！！</title>
  </head>
 
  <body>
-
-   <!-- タイトルロゴを呼び出している -->
-   <div class="animated bounceInDown title_logo_box">
-    <img src="/static/images/bonbee_logo.svg" class="title_logo">
-   </div>
-
-   <div class="register_box">
-     <p><a href="{{url_for('register')}}" class="register_moji">ボンビースポットを共有しよう！</a></p>
-   </div>
-
-<!-- 工事現場
-   <div class="form_box">
-     <div class="form_border">
-       <select class="type_select" name="type">
-          <option value=""></option>
-       </select>
-     </div>
-   </div> -->
-
-   <!-- ◯をたくさん出している -->
+   <!-- ◯をたくさん出している
    <div id="startCircle" class="Circle_box">
      <div class="Circle_border">
        <img src="/static/images/breakC.svg" id="bC" class="breakC type_Circles">
@@ -44,9 +25,9 @@
        <img src="/static/images/300-700yen.svg" id="300700C" class="100yen money_Circles">
        <img src="/static/images/700-1000yen.svg" id="7001000C" class="200yen money_Circles">
      </div>
-   </div>
+   </div> -->
 
-   <!-- ジャンル・金額選択
+   <!-- ジャンル・金額選択 -->
    <form class="form_box" action="/post" method="post">
      <select class="type_select" name="type">
        <option value="">ジャンルを選択！</option>
@@ -73,7 +54,8 @@
        <option value="900">900円</option>
        <option value="1000">1000円</option>
      </select>
-   </form> -->
+     <input type="submit" value="検索！">
+   </form>
 
  <!-- ◯の下の文字を出している -->
  <div class="Lets_Start_box">
