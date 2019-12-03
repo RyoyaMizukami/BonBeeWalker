@@ -3,6 +3,8 @@ input[type=number]::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
+@charset "utf-8";
+@import "../node_modules/bulma/bulma.sass";
 
 #title {
   font-size: 25px;
@@ -38,7 +40,7 @@ tbody{
 }
 
 .nav_color{
-  background-color: #44CF8A;
+  background-color: #F0DDB6;
 }
 
 .index_bg{
