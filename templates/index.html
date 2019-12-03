@@ -10,6 +10,12 @@
  </head>
 
  <body>
+
+   <!-- タイトルロゴを呼び出している -->
+   <div class="animated bounceInDown title_logo_box">
+     <img src="/static/images/bonbee_logo.svg" class="title_logo">
+   </div>
+
    <!-- ◯をたくさん出している
    <div id="startCircle" class="Circle_box">
      <div class="Circle_border">
@@ -28,7 +34,7 @@
    </div> -->
 
    <!-- ジャンル・金額選択 -->
-   <form class="form_box" action="/post" method="post">
+   <form class="form_box" action="/result" method="post">
      <select class="type_select" name="type">
        <option value="">ジャンルを選択！</option>
        <option value="休憩">休憩</option>
@@ -91,6 +97,8 @@
    <p><span class="caution">※現在は花小金井地区にのみ対応しております。</span></p>
  </div>
 
+<!--
  <script type="text/javascript" src="/static/js/start.js"></script>
+-->
  </body>
 </html>

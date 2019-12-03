@@ -38,7 +38,7 @@ def register():
     return render_template('commons/register.html')
 
 # 検索の過程
-@app.route('/searching', methods=['POST'])
+@app.route('/result', methods=['POST'])
 def post():
     IsValue = False
 
@@ -47,23 +47,23 @@ def post():
     print(budget)
     print(type)
     if not type and not budget:
-        IsValue = Truec
+        IsValue = True
         return render_template('index.html', IsValue = IsValue)
 
     cur = get_connection().cursor()
 
     if type and not budget:
-        cur.execute('SELECT type,money,place,cando FROM zgundam WHERE type LIKE %s ORDER BY money ASC', (type,))
+        cur.execute('SELECT type,money,place,random_address FROM zgundam WHERE type LIKE %s ORDER BY money ASC', (type,))
         data = cur.fetchall()
         cur.close()
         get_connection().close()
     elif budget and not type:
-        cur.execute('SELECT type,money,place,cando FROM zgundam WHERE money <= %s ORDER BY money ASC', (budget,))
+        cur.execute('SELECT type,money,place,random_address FROM zgundam WHERE money <= %s ORDER BY money ASC', (budget,))
         data = cur.fetchall()
         cur.close()
         get_connection().close()
     else:
-        cur.execute('SELECT type,money,place,cando FROM zgundam WHERE money <= %s AND type LIKE %s ORDER BY money ASC', (budget,type,))
+        cur.execute('SELECT type,money,place,random_address FROM zgundam WHERE money <= %s AND type LIKE %s ORDER BY money ASC', (budget,type,))
         data = cur.fetchall()
         cur.close()
         get_connection().close()
@@ -102,10 +102,28 @@ def registing():
         IsValue = True
         return render_template('commons/register.html', IsValue = IsValue, API_key = API_key)
 
+# 検索結果表示の一時テスト用
+"""
+@app.route('/result')
+def result():
+    cur = get_connection().cursor()
+    cur.execute('SELECT * FROM url_test;')
+    data = cur.fetchall()
+    cur.close()
+    get_connection().close()
+
+    return render_template('commons/result.html', data = data, len = len(data))
+"""
+
 # 各URL用の概要ページ
 @app.route('/result/<name>')
-def hello(name):
-    return render_template('commons/detail_template.html')
+def detail(name):
+    cur = get_connection().cursor()
+    cur.execute('SELECT place FROM zgundam WHERE random_address LIKE %s;', (name,))
+    place = cur.fetchone()
+    cur.close()
+    get_connection().close()
+    return render_template('commons/detail_template.html', place = place, random_address = name)
 
 # おまじない。これがないとHerokuで動かない。
 if __name__ == "__main__":
