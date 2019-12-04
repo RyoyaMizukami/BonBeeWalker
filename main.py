@@ -2,6 +2,7 @@
 # 色々引っ張ってきたり、定義したり
 from flask import Flask, render_template, session, redirect, url_for, escape, request
 import psycopg2
+import psycopg2.extras
 import os
 app = Flask(__name__)
 # ↓はGoogle Maps APIのAPIキーを定義してます。APIキーというのは鍵です。
@@ -78,9 +79,10 @@ def registing():
     #placeID = request.form['placeID']
     place = request.form['place']
     cando = request.form['cando']
+    identity = request.form['identity']
 
-    if type and money and place and cando:
-        print(type, money, place, cando)
+    if type and money and place and cando and identity:
+        print(type, money, place, cando, identity)
         IsValue = False
 
         conn = get_connection()
@@ -90,7 +92,7 @@ def registing():
         print(id)
         id += 1
         print(id)
-        cur.execute('INSERT INTO zgundam(id, type, money, place, cando) VALUES(%s, %s, %s, %s, %s);', (id, type, money, place, cando))
+        cur.execute('INSERT INTO zgundam(id, type, money, place, cando, identity) VALUES(%s, %s, %s, %s, %s,%s);', (id, type, money, place, cando, identity))
         cur.close()
         conn.commit()
         conn.close()
@@ -107,6 +109,69 @@ def registing():
 def hello(name):
     return render_template('commons/detail_template.html')
 
+#ログイン
+@app.route('/login', methods=['POST'])
+def login():
+    identity = request.form['identity']
+    password = request.form['password']
+    print(identity)
+    print(password)
+
+    #ucgundamから一致するか検索する
+    cur = get_connection().cursor()
+    cur.execute('SELECT identity,password FROM ucgundam WHERE identity LIKE %s AND password LIKE %s', (identity,),(password,))
+    #cur.execute('SELECT password FROM ucgundam WHERE password  LIKE %s', (password,))
+    data = cur.fetchall()
+    cur.close()
+    get_connection().close()
+
+
+#アリの場合
+    #一致したらzgumdamから過去の投稿を引っ張ってくる
+    if   identity and  == :
+
+
+        cur = get_connection().cursor(cursor_factory=psycopg2.extras.DictCursor)
+        cur.execute('SELECT * FROM zgundam WHERE identity LIKE %s ORDER BY id ASC;', (identity))
+        data = cur.fetchall()
+        cur.close()
+        get_connection().close()
+
+        return render_template('commons/mypage.html', id = id, type = type, money = money, place = place, cando = cando, data = data, len = len(data))
+
+#なしの場合
+    #一致しなかった場合。zgumdamのプロセスをすっ飛ばす
+    else:
+        IsValue = False
+
+        conn = get_connection()
+        cur = conn.cursor()
+        cur.execute('INSERT INTO ucgundam(identity, password) VALUES(%s, %s);', (identity,password))
+        cur.close()
+        conn.commit()
+        conn.close()
+
+
+        return render_template('commons/mypage.html', identity = identity, )
+
+
+@app.route('/delete',methods=['POST'])
+def delete():
+    delete_id = request.form['delete_id']
+    delete_identity = request.form['delete_identity']
+    print(delete_id, delete_identity)
+
+    conn = get_connection()
+    cur = conn.cursor()
+    cur.execute('DELETE  FROM zgundam WHERE id')
+    cur.close()
+    conn.commit()
+    conn.close()
+
+    return render_template('commons/mypage.html')
+
+
 # おまじない。これがないとHerokuで動かない。
 if __name__ == "__main__":
+    app.debug = True
     app.run()
