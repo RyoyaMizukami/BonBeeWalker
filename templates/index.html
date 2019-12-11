@@ -11,19 +11,20 @@
 
  <body>
 
-   <div class="search_window">
+   <div class="login_form_box">
      <form action="/login" method="post">
        <table border="0">
            <text align="right"><b> ID:</b>
            <input type="text" size=20 name="identity" maxlength="16">
            <text align="right"><b> Password:</b>
            <input type="password" name="password" size="10" maxlength="8">
-           <a href="./commons/mypage.html"><input type="submit" value="ログイン" class="button is-info is-small"></a>
+           <input type="submit" value="ログイン" class="button is-info is-small"></a>
      </form>
-     {% if IsValue%}
-      <font color="red" class="error_message">IDまたはパスワードが未入力です。値を入力してください。</font><br>
-     {% endif %}
    </div>
+   
+     {% if IsValue %}
+      <p class="error_message">IDまたはパスワードが未入力です。値を入力してください。</p>
+     {% endif %}
 
    <!-- タイトルロゴを呼び出している -->
    <div class="animated bounceInDown title_logo_box">
@@ -103,11 +104,8 @@
  <div class="moji_box">
    <p><h1 class="animated fadeIn">どうやるの？</h1></p>
    <p><h2>探す</h2></p>
-   <p><span class="moji_body">ページ上部に出ているボールをタップしてみよう！</span></p>
-   <p><span class="moji_body">それぞれのボールにはやりたいことや</span></p>
-   <p><span class="moji_body">予算についての質問が書いてあるよ。</span></p>
-   <p><span class="moji_body">全ての質問に答えてくれたら、</span></p>
-   <p><span class="moji_body">オススメのボンビースポットを紹介するよ！</span></p>
+   <p><span class="moji_body">ページ上部のメニューからジャンルと予算を選択して</span></p>
+   <p><span class="moji_body">「検索」ボタンをクリックすると、ボンビースポットを探せるよ！</span></p>
    <p><span class="caution">※現在は花小金井地区にのみ対応しております。</span></p>
  </div>
 

@@ -1,10 +1,7 @@
 html,body{
   margin: 0;
-  background-image: linear-gradient(135deg, #f5f7fa, #c3cfe2, #f5f7fa, #c3cfe2);
   font-family:Verdana, "ＭＳ Ｐゴシック", sans-serif;
   font-size:80%;
-  height: 2436px;
-  width: 1125px;
 }
 
 footer{
@@ -43,15 +40,25 @@ footer{
 }
 
 .type_select{
-  font-size: 50px;
-  margin: 15px;
+  display: none;
+  font-size: 13px;
+  margin: 5px;
   text-align: center;
 }
 
 .budget_select{
-  font-size: 50px;
-  margin: 15px;
+  display: none;
+  font-size: 13px;
+  margin: 5px;
   text-align: center;
+}
+
+#submit_button{
+  display: none;
+}
+
+#return_button{
+  display: none;
 }
 
 .Circle_box{
@@ -118,10 +125,15 @@ h2{
 }
 
 .moji_body{
-  font-size: 40px;
+  font-size: 13px;
 }
 
 .caution{
-  font-size: 40px;
+  font-size: 13px;
+  color: red;
+}
+
+.error_message{
+  text-align: left;
   color: red;
 }

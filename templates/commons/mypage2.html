@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="jp" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>みんなで作るボンビーウォーカー！ - マイページ</title>
+    <link rel="stylesheet" href="static/css/index.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+    <link rel="stylesheet" href="/static/js/node_modules/animate.css/animate.min.css">
+    <script src="/static/js/node_modules/animejs/lib/anime.min.js"></script>
+  </head>
+
+  <body>
+    <nav class="level has-background-black is-marginless" style="padding:10px;">
+        <a class="level-item" href="{{url_for('index')}}">
+          <img src="/static/images/BonBeeWalker_logo1-01.svg">
+        </a>
+    </nav>
+
+    <nav class="level has-background-warning is-marginless">
+      <center>
+        <b class="lebel-item">{{identity}}さん
+          {% if NiceToMeetYou==False %}
+          おかえりなさい！
+          {% else %}
+          はじめまして！
+          {% endif %}
+        </b>
+      </center>
+    </nav>
