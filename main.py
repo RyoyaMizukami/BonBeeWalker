@@ -178,7 +178,7 @@ def login():
         elif identity == authorization[0]:
             NiceToMeetYou = False
             cur = get_connection().cursor(cursor_factory=psycopg2.extras.DictCursor)
-            cur.execute('SELECT id,type,money,place,cando,displayable FROM zgundam WHERE identity LIKE %s ORDER BY id ASC;', (identity,))
+            cur.execute("SELECT id,type,money,place,cando,displayable FROM zgundam WHERE identity LIKE %s AND displayable = 't' ORDER BY id ASC;", (identity,))
             data = cur.fetchall()
             cur.close()
             get_connection().close()
