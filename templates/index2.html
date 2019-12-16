@@ -29,16 +29,19 @@
         </form>
       </div>
     </nav>
-    {% if IsValue %}
-     <p class="error_message">IDまたはパスワードが未入力です。値を入力してください。</p>
+    {% if IsIDPassValue %}
+     <p class="error_message">IDまたはパスワードが未入力です。<br>値を入力してください。</p>
+    {% elif IsIDPassInvalid %}
+     <p class="error_message">IDまたはパスワードが誤っています。<br>もう一度入力し直してください。</p>
     {% endif %}
 
     <section class="section">
       <div class="container animated fadeInDown">
-        <center><b>今、何ができるか調べてみよう</b></center>
+        <center><p><b>今、何ができるか調べてみよう</b></p>
         <button class="button is-middle is-warning has-text-white" id="type_button" name="type" style="margin:5px;">ジャンル</button>
         <button class="button is-middle is-warning has-text-white" id="money_button" name="type" style="margin:5px;">君の予算</button>
-        <button class="button is-middle is-warning has-text-white" id="both_button" name="type" style="margin:5px;">両方！</button>
+        <button class="button is-middle is-warning has-text-white" id="both_button" name="type" style="margin:5px;">両方！</button></center>
+      </div>
         <form class="form_box" action="/result" method="post">
           <select class="type_select" name="type" id="pulldown_type">
             <option value="">ジャンルを選択！</option>
@@ -67,8 +70,7 @@
           </select>
           <input type="submit" value="検索！" style="width: 100px; height: 30px;" id="submit_button">
         </form>
-        <button class="button is-middle is-warning has-text-white" id="return_button" name="return" style="margin:5px;">一つ前へ戻る</button>
-      </div>
+        <center><button class="button is-middle is-warning has-text-white" id="return_button" name="return">一つ前へ戻る</button></center>
     </section>
 
     <section class="section">

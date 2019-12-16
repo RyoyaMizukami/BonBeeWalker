@@ -110,6 +110,61 @@ footer{
   text-align: center;
 }
 
+.section_box{
+  margin-top: 20px;
+}
+
+.underline{
+  text-decoration:underline;
+}
+
+.table_rabel{
+  font-size: 13px;
+  background-color: black;
+}
+
+.table_body{
+  font-size: 13px;
+}
+
+.budget_view{
+  font-size: 30px;
+}
+
+.place_card_box{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.place_card{
+  position: relative;
+  width: 300px;
+  height: 100px;
+  border: solid thin black;
+}
+
+.place_in_card{
+  position: absolute;
+  top: 5%;
+  left: 3%;
+  font-size: 35px;
+}
+
+.money_in_card{
+  position: absolute;
+  left: 70%;
+  top: 10%;
+  font-size: 50px;
+  color: black;
+}
+
+.type_in_card{
+  position: absolute;
+  bottom: 10%;
+  left: 3%;
+}
+
 h1{
   margin: 0px;
   color: #44CF8A;
