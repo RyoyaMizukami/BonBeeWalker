@@ -4,6 +4,7 @@ html,body{
   font-size:80%;
 }
 
+
 footer{
   background-color: #FFF;
   width: 1125px;
@@ -165,11 +166,13 @@ footer{
   left: 3%;
 }
 
+
+
 h1{
   margin: 0px;
   color: #44CF8A;
   -webkit-text-stroke: 2px #000;
-  font-size: 80px;
+  font-size: 120px;
 }
 
 h2{
@@ -190,5 +193,14 @@ h2{
 
 .error_message{
   text-align: left;
+  color: red;
+}
+
+p.sns_logos{
+  text-align: right;
+}
+
+div.sns_templates{
+  font-size: 10px;
   color: red;
 }
