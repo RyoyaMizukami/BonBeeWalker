@@ -29,11 +29,13 @@
         </form>
       </div>
     </nav>
+    <div class="error_box">
     {% if IsIDPassValue %}
      <p class="error_message">IDまたはパスワードが未入力です。<br>値を入力してください。</p>
     {% elif IsIDPassInvalid %}
      <p class="error_message">IDまたはパスワードが誤っています。<br>もう一度入力し直してください。</p>
     {% endif %}
+    </div>
 
     <section class="section">
       <div class="container animated fadeInDown">

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="jp" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>みんなで作るボンビーウォーカー！ - マイページ</title>
+    <link rel="stylesheet" href="static/css/register_locate.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+    <link rel="stylesheet" href="/static/js/node_modules/animate.css/animate.min.css">
+    <script src="/static/js/node_modules/animejs/lib/anime.min.js"></script>
+  </head>
+
+  <body>
+    <nav class="level has-background-black is-marginless" style="padding:10px;">
+        <a class="level-item" href="{{url_for('index')}}">
+          <img src="/static/images/BonBeeWalker_logo1-01.svg">
+        </a>
+    </nav>
+
+    <section class="section">
+      <div class="title_box">
+        <p><span class="title_text">ボンビースポット<br>投稿ページ</span></p>
+      </div>
+    </section>
+
+    <form class="" action="/registering" method="post">
+
+      <section>
+        <div class="elements_box">
+          <p><span class="elements_text">What Category?</span></p>
+        </div>
+
+        <div class="elements_box">
+          <select class="pulldown_menu" name="type">
+            <option value=""></option>
+            <option value="休憩">休憩</option>
+            <option value="レジャー・スポーツ">レジャー・スポーツ</option>
+            <option value="娯楽">娯楽</option>
+            <option value="グルメ">グルメ</option>
+            <option value="ショッピング">ショッピング</option>
+            <option value="パワースポット">パワースポット</option>
+            <option value="トイレ">トイレ</option>
+            <option value="デートスポット">デートスポット</option>
+          </select>
+        </div>
+      </section>
+
+      <section>
+        <div class="elements_box">
+
+        </div>
+      </section>
+    </form>
