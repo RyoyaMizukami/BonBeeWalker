@@ -49,7 +49,6 @@ def post():
     print(budget)
     print(type)
     if not type and not budget:
-        IsIDPassValue = True
         return render_template('index2.html', IsIDPassValue = IsIDPassValue)
 
     cur = get_connection().cursor()
