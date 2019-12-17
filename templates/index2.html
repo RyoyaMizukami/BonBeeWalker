@@ -1,72 +1,101 @@
 <!DOCTYPE html>
 <html lang="jp" dir="ltr">
- <head>
+  <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>みんなで作るボンビーウォーカー！</title>
+    <link rel="stylesheet" href="static/css/index.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
     <link rel="stylesheet" href="/static/js/node_modules/animate.css/animate.min.css">
-    <link rel="stylesheet" href="static/css/test.css">
-    <script src="/static/js/node_modules/animejs/lib/anime.min.js"></script>
-    <meta name="viewport" content="width=device-width">
-    <title>みんなで作る！ボンビーウォーカー！！</title>
- </head>
 
- <body>
+  </head>
 
-   <!-- タイトルロゴを呼び出している -->
-   <div class="animated bounceInDown title_logo_box">
-    <img src="/static/images/bonbee_logo.svg" class="title_logo">
-   </div>
+  <body>
+    <nav class="level has-background-black is-marginless" style="padding:10px;">
+        <a class="level-item" href="{{url_for('index')}}">
+          <img src="/static/images/BonBeeWalker_logo1-01.svg">
+        </a>
+    </nav>
 
-   <!-- ◯をたくさん出している -->
-   <div id="startCircle" class="Circle_box">
-     <div class="Circle_border">
-       <img src="/static/images/breakC.svg" id="bC" class="breakC type_Circles">
-       <img src="/static/images/datingspotC.svg" id="dsC" class="datingspotC type_Circles">
-       <img src="/static/images/hobbyC.svg" id="hC" class="hobbyC type_Circles">
-       <img src="/static/images/powerspotC.svg" id="pC" class="powerspotC type_Circles">
-       <img src="/static/images/shoppingC.svg" id="shC" class="shoppingC type_Circles">
-       <img src="/static/images/toiretC.svg" id="tC" class="toiretC type_Circles">
-       <img src="/static/images/gourmetC.svg" id="gC" class="gourmetC type_Circles">
-       <img src="/static/images/sportsC.svg" id="spC" class="sportsC type_Circles">
-       <img src="/static/images/0-300yen.svg" id="0300C" class="0yen money_Circles">
-       <img src="/static/images/300-700yen.svg" id="300700C" class="100yen money_Circles">
-       <img src="/static/images/700-1000yen.svg" id="7001000C" class="200yen money_Circles">
-     </div>
-   </div>
+    <nav class="level has-background-grey-lighter is-marginless">
+      <div class="level-right">
+        <form class="level-item" action="/login" method="post">
+            <b>ID</b>
+            <input style="margin:4px;" type="text" size="10" name="identity" maxlength="16">
+            <b>Password</b>
+            <input style="margin:4px;" type="password" name="password" size="10" maxlength="8">
+            <input type="submit" value="ログイン">
+        </form>
+      </div>
+    </nav>
+    <div class="error_box">
+    {% if IsIDPassValue %}
+     <p class="error_message">IDまたはパスワードが未入力です。<br>値を入力してください。</p>
+    {% elif IsIDPassInvalid %}
+     <p class="error_message">IDまたはパスワードが誤っています。<br>もう一度入力し直してください。</p>
+    {% endif %}
+    </div>
 
- <!-- ◯の下の文字を出している -->
- <div class="Lets_Start_box">
-   <p><span class="StartMoji">行きたいところをタップして、ツアースタート！</span></p>
- </div>
+    <section class="section">
+      <div class="container animated fadeInDown">
+        <center><p><b>今、何ができるか調べてみよう</b></p>
+        <button class="button is-middle is-warning has-text-white" id="type_button" name="type" style="margin:5px;">ジャンル</button>
+        <button class="button is-middle is-warning has-text-white" id="money_button" name="type" style="margin:5px;">君の予算</button>
+        <button class="button is-middle is-warning has-text-white" id="both_button" name="type" style="margin:5px;">両方！</button></center>
+      </div>
+        <form class="form_box" action="/result" method="post">
+          <select class="type_select" name="type" id="pulldown_type">
+            <option value="">ジャンルを選択！</option>
+            <option value="休憩">休憩</option>
+            <option value="レジャー・スポーツ">レジャー・スポーツ</option>
+            <option value="娯楽">娯楽</option>
+            <option value="グルメ">グルメ</option>
+            <option value="ショッピング">ショッピング</option>
+            <option value="パワースポット">パワースポット</option>
+            <option value="トイレ">トイレ</option>
+            <option value="デートスポット">デートスポット</option>
+          </select>
+          <select class="budget_select" name="budget" id="pulldown_money">
+            <option value="">予算を選択！</option>
+            <option value=0>0円</option>
+            <option value=100>100円</option>
+            <option value=200>200円</option>
+            <option value=300>300円</option>
+            <option value=400>400円</option>
+            <option value=500>500円</option>
+            <option value="600">600円</option>
+            <option value="700">700円</option>
+            <option value="800">800円</option>
+            <option value="900">900円</option>
+            <option value="1000">1000円</option>
+          </select>
+          <input type="submit" value="検索！" style="width: 100px; height: 30px;" id="submit_button">
+        </form>
+        <center><button class="button is-middle is-warning has-text-white" id="return_button" name="return">一つ前へ戻る</button></center>
+    </section>
 
- <!-- 線を出している -->
- <div class="sen_box">
-   <p></p>
- </div>
+    <section class="section">
+      <center><p class="title is-4">What's BonbeeWalker!?</p>
+      <p><span class="moji_body">「みんなで作る！ボンビーウォーカー」は</span></p>
+      <p><span class="moji_body">お金のない人でも楽しめる場所を案内するアプリ！</span></p>
+      <p><span class="moji_body">今行きたい場所ややりたいこと、</span></p>
+      <p><span class="moji_body">予算を教えてくれたらそんな場所を教えるよ！</span></p></center>
 
- <!-- 紹介文を出している -->
- <div class="moji_box">
-   <p><h1 class="animated fadeIn">ボンビーウォーカーとは?</h1></p>
-   <p><span class="moji_body">「みんなで作る！ボンビーウォーカー」は</span></p>
-   <p><span class="moji_body">お金のない人でも楽しめる場所を案内するアプリ！</span></p>
-   <p><span class="moji_body">今行きたい場所ややりたいこと、</span></p>
-   <p><span class="moji_body">予算を教えてくれたらそんな場所を教えるよ！</span></p>
- </div>
+      <center><p class="title is-4" style="margin-top:20px;">How to use BonbeeWalker?</p>
+      <p><span class="moji_body">ページ上部の選択肢をタップして、</span></p>
+      <p><span class="moji_body">興味のあるジャンルや自分の予算を教えてね。</span></p>
+      <p><span class="moji_body">そうしたら、ボンビースポットを教えるよ！</span></p>
+      <p><span class="moji_body">ログインして、きみのボンビースポットも</span></p>
+      <p><span class="moji_body">共有しよう！</span></p>
+      <p><span class="caution">※ログイン時に使用するID・パスワードは他のサービスでは使用していないものをご利用ください。</span></p>
+      </center>
+    </section>
 
- <div class="sen_box">
-   <p></p>
- </div>
+    <section class="section">
+      <center><p class="title" style="font-style:italic;">Enjoy Bonbee life!!</p></center>
+    </section>
 
- <div class="moji_box">
-   <p><h1 class="animated fadeIn">どうやるの？</h1></p>
-   <p><h2>探す</h2></p>
-   <p><span class="moji_body">ページ上部に出ているボールをタップしてみよう！</span></p>
-   <p><span class="moji_body">それぞれのボールにはやりたいことや</span></p>
-   <p><span class="moji_body">予算についての質問が書いてあるよ。</span></p>
-   <p><span class="moji_body">全ての質問に答えてくれたら、</span></p>
-   <p><span class="moji_body">オススメのボンビースポットを紹介するよ！</span></p>
-   <p><span class="caution">※現在は花小金井地区にのみ対応しております。</span></p>
- </div>
-
- <script type="text/javascript" src="/static/js/start.js"></script>
- </body>
+    <script type="text/javascript" src="/static/js/SearchInPage.js"></script>
+  </body>
 </html>

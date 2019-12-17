@@ -4,41 +4,49 @@
        詳細は省きますが、他にも「見た目には見せない」要素を置く場所です（多分）。-->
   <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- scriptタグはサイトに動きを与えるjsを呼び出すタグです。 -->
     <!-- <script type="text/javascript" src="/static/js/gmap_api_test.js"></script> -->
     <!-- linkタグはサイトの見た目を変えることが出来るcssを呼び出すタグです。 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.1.2/css/bulma.css">
-    <link rel="stylesheet" href="/static/css/res_styles.css">
+    <link rel="stylesheet" href="/static/css/index.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+    <link rel="stylesheet" href="/static/js/node_modules/animate.css/animate.min.css">
     <!-- titleタグはページの名前を宣言するタグです。 -->
     <title>みんなで作るボンビーウォーカー！ - 登録ページ</title>
-    <meta charset="utf-8">
   </head>
 
   <!-- bodyタグでは、「見せたい」中身を書きます。文字通りWebページの「身体」です。 -->
   <body>
-    <a class="navbar-item" href={{url_for('search2')}}>
-      <img src="/static/images/bonbeelogo.png" width="200" height="50">
-    </a>
+    <nav class="level has-background-black is-marginless" style="padding:10px;">
+        <a class="level-item" href="{{url_for('index')}}">
+          <img src="/static/images/BonBeeWalker_logo1-01.svg">
+        </a>
+    </nav>
+
     <!-- タイトル表示を司る箇所。divタグはただの箱。spanも言ってしまえば箱。pタグも改行してくれる箱。
          文字を表示したいって話ならこれでいいはず。 -->
+    <section class="section">
     <div class="title_box">
-      <p><span class="title_font">ボンビースポット 登録ページ</span></p>
+      <center>
+        <p><span class="title_font">ボンビースポット<br>登録ページ</span></p>
+      </center>
     </div>
+  </section>
 
     {% if IsValue%}
       <p><font color="red" class="error_message">全ての項目を記入してね！</font></p>
     {% endif %}
 
     <!-- ジャンル、金額、場所、出来ること　の入力を司る箇所。ここで初めてformタグが登場する。
-         formタグには、actionとmethodを入れる必要があるがここには基本的に"/post"と"post"を入れれば良い。
+         formタグには、methodを入れる必要があるがここには基本的に"post"を入れれば良い。
          postとgetの違いについては調べましょう。 -->
-    <div class="form_box">
-      <form action="/resister_post" method="post">
-
-        <div class="type_input">
+    <div class="form_box_box">
+      <form action="/register_post" method="post">
           <p><span class="item_heading">ジャンルを選択！</span></p>
-          <div class="type_select">
-          <select class="pulldown_menu" name="type">
+          <div class="select_box">
+          <select class="pulldown_menu form_box" name="type">
             <option value=""></option>
       			<option value="休憩">休憩</option>
       			<option value="レジャー・スポーツ">レジャー・スポーツ</option>
@@ -49,11 +57,10 @@
             <option value="トイレ">トイレ</option>
             <option value="デートスポット">デートスポット</option>
           </select>
-          </div>
         </div>
 
         <p><span class="item_heading">値段は？(1000円以下で教えてね！)</span></p>
-        <div class="money_input">
+        <div class="money_input select_box">
           <input type="number"
                  name="money"
                  min="0"
@@ -62,18 +69,19 @@
           <span class="yen">円</span>
         </div>
 
-<!-- カードが実装できないってことはここは全部凍結されるってことなんですね～ -->
-    <!--    <p><span class="item_heading">できた場所を検索して場所IDをコピペしよう！</span></p>
+<!--
+        <p><span class="item_heading">できた場所を検索して場所IDをコピペしよう！</span></p>
         <div class="map_view"> -->
           <!-- この部分はGoogle Maps APIの呼び出し。js読むと理解できます。 -->
-        <!--  <div style="display: none">
+<!--          <div style="display: none">
             <input id="pac-input"
                    class="controls"
                    type="text"
                    placeholder="地名・店名を入力">
           </div>
-          <div id="map"></div> -->  <!--地図を表示する div 要素-->
-      <!--    <div id="infowindow-content">
+          <div id="map"></div> -->
+         <!--地図を表示する div 要素-->
+<!--         <div id="infowindow-content">
             <span id="place-name" class="title"></span><br>
             <strong>場所ID:</strong> <span id="place-id"></span><br>
             <span id="place-address"></span>
@@ -87,7 +95,7 @@
         </div> -->
 
         <p><span class="item_heading">場所を入力しよう！</span></p>
-        <div class="place_input">
+        <div class="money_input select_box">
           <p><input type="text"
                  name="place"
                  class="place_window"
@@ -95,15 +103,16 @@
         </div>
 
         <p><span class="item_heading">できたことを入力しよう！(60文字以内)</span></p>
-        <div class="cando_input">
+        <div class="money_input select_box">
           <p><input type="text"
                  name="cando"
                  class="cando_window"
                  maxlength="60"></p>
         </div>
 
-        <div class="submit_button_box">
+        <div class="money_input   ">
           <input type="submit" value="登録！" class="submit_button">
+          <input type="hidden" name=identity value="{{identity}}">
         </div>
       </form>
     </div>
