@@ -15,18 +15,6 @@ def get_connection():
     dsn = os.environ.get('DATABASE_URL')
     return psycopg2.connect(dsn)
 
-@app.route('/res2')
-def my2():
-    identity = "らびりんす"
-    NiceToMeetYou = False
-    budget = 600
-    place = "小金井公園"
-    type = "休憩"
-    money = 0
-    random_address = "aaaaaaaaaaaaaaaa"
-    return render_template('commons/result2.html', identity = identity, NiceToMeetYou = NiceToMeetYou, budget = budget, place = place, type = type, money = money, random_address = random_address)
-
-
 # 最初にアクセスされるページ
 @app.route('/')
 def index():
@@ -55,22 +43,22 @@ def post():
     cur = get_connection().cursor()
 
     if type and not budget:
-        cur.execute('SELECT type,money,place,random_address FROM zgundam WHERE type LIKE %s ORDER BY money ASC', (type,))
+        cur.execute("SELECT type,money,place,random_address FROM zgundam WHERE type LIKE %s AND displayable = 't' ORDER BY money ASC", (type,))
         data = cur.fetchall()
         cur.close()
         get_connection().close()
     elif budget and not type:
-        cur.execute('SELECT type,money,place,random_address FROM zgundam WHERE money <= %s ORDER BY money ASC', (budget,))
+        cur.execute("SELECT type,money,place,random_address FROM zgundam WHERE money <= %s AND displayable = 't' ORDER BY money DESC", (budget,))
         data = cur.fetchall()
         cur.close()
         get_connection().close()
     else:
-        cur.execute("SELECT type,money,place,random_address FROM zgundam WHERE money <= %s AND type LIKE %s AND displayable = 't' ORDER BY money ASC", (budget,type))
+        cur.execute("SELECT type,money,place,random_address FROM zgundam WHERE money <= %s AND type LIKE %s AND displayable = 't' ORDER BY money DESC", (budget,type))
         data = cur.fetchall()
         cur.close()
         get_connection().close()
 
-    return render_template('commons/result.html', budget = budget, type = type, data = data, len = len(data))
+    return render_template('commons/result2.html', budget = budget, type = type, data = data, len = len(data))
 
 def random_address_generator(n):
     rand_list = [random.choice(string.ascii_letters + string.digits) for i in range(n)]
@@ -162,7 +150,7 @@ def login():
         elif auth_id and auth_pw:
             NiceToMeetYou = False
             cur = get_connection().cursor(cursor_factory=psycopg2.extras.DictCursor)
-            cur.execute("SELECT id,type,money,place,cando,displayable FROM zgundam WHERE identity LIKE %s AND displayable = 't' ORDER BY id ASC;", (identity,))
+            cur.execute("SELECT id,type,money,place,cando,displayable FROM zgundam WHERE identity LIKE %s AND displayable = 't' ORDER BY id DESC;", (identity,))
             data = cur.fetchall()
             cur.close()
             get_connection().close()
