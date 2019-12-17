@@ -25,19 +25,41 @@
     </nav>
 
     <section class="section">
-      <p><span class="budget_view"><b>予算{{budget}}円</b></span></p>
+      {% if budget %}
+      <p class="budget_view">予算{{budget}}円</p>
+      {% else %}
+      <p class="budget_view">ジャンル:{{type}}</p>
+      {% endif %}
     </section>
 
+
+    {% for row in data %}
     <section class="place_card_box">
-      <a href="{{url_for('detail', name = random_address)}}">
+      <a href="{{url_for('detail', name = row[3])}}">
         <div class="place_card">
-          <h1 class="place_in_card">
-            {{place}}
+
+          {% if row[2]|length <= 6 %}
+          <h1 class="place_in_card_short">
+          {% elif row[2]|length >= 11 %}
+          <h1 class="place_in_card_long">
+          {% else %}
+          <h1 class="place_in_card_medium">
+          {% endif %}
+            {{row[2]}}
           </h1>
-          <h2 class="money_in_card">
-            {{money}}円
-          </h2>
-          <span class="tag is-primary type_in_card">{{type}}</span>
+
+          {% if row[1] == 0 %}
+            <h2 class="money_in_card_0yen">
+          {% elif row[1] == 1000 %}
+            <h2 class="money_in_card_1000yen">
+          {% else %}
+            <h2 class="money_in_card_100yen">
+          {% endif %}
+          {{row[1]}}円
+            </h2>
+
+          <span class="tag is-primary type_in_card">{{row[0]}}</span>
         </div>
       </a>
     </section>
+    {% endfor %}

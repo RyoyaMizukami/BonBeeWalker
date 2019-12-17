@@ -15,17 +15,21 @@ def get_connection():
     dsn = os.environ.get('DATABASE_URL')
     return psycopg2.connect(dsn)
 
+@app.route('/register_locate')
+def register_locate():
+    return render_template('commons/register_locate.html')
+
 @app.route('/res2')
 def my2():
-    identity = "らびりんす"
-    NiceToMeetYou = False
-    budget = 600
-    place = "小金井公園"
-    type = "休憩"
-    money = 0
-    random_address = "aaaaaaaaaaaaaaaa"
-    return render_template('commons/result2.html', identity = identity, NiceToMeetYou = NiceToMeetYou, budget = budget, place = place, type = type, money = money, random_address = random_address)
+    cur = get_connection().cursor()
+    cur.execute("SELECT type,money,place,random_address FROM zgundam WHERE type LIKE '休憩' ORDER BY money ASC")
+    data = cur.fetchall()
+    cur.close()
+    get_connection().close()
 
+    print(data)
+
+    return render_template('commons/result2.html', data = data)
 
 # 最初にアクセスされるページ
 @app.route('/')
@@ -54,22 +58,22 @@ def post():
     cur = get_connection().cursor()
 
     if type and not budget:
-        cur.execute('SELECT type,money,place,random_address FROM zgundam WHERE type LIKE %s ORDER BY money ASC', (type,))
+        cur.execute('SELECT type,money,place,random_address FROM zgundam WHERE type LIKE %s ORDER BY money DESC', (type,))
         data = cur.fetchall()
         cur.close()
         get_connection().close()
     elif budget and not type:
-        cur.execute('SELECT type,money,place,random_address FROM zgundam WHERE money <= %s ORDER BY money ASC', (budget,))
+        cur.execute('SELECT type,money,place,random_address FROM zgundam WHERE money <= %s ORDER BY money DESC', (budget,))
         data = cur.fetchall()
         cur.close()
         get_connection().close()
     else:
-        cur.execute("SELECT type,money,place,random_address FROM zgundam WHERE money <= %s AND type LIKE %s AND displayable = 't' ORDER BY money ASC", (budget,type))
+        cur.execute("SELECT type,money,place,random_address FROM zgundam WHERE money <= %s AND type LIKE %s AND displayable = 't' ORDER BY money DESC", (budget,type))
         data = cur.fetchall()
         cur.close()
         get_connection().close()
 
-    return render_template('commons/result.html', budget = budget, type = type, data = data, len = len(data))
+    return render_template('commons/result2.html', budget = budget, type = type, data = data)
 
 def random_address_generator(n):
     rand_list = [random.choice(string.ascii_letters + string.digits) for i in range(n)]

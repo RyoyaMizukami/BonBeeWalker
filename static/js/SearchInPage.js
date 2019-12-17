@@ -24,7 +24,6 @@ function DisplaySubmitButton(){
 
 function DisplayReturnButton(){
   return_button.classList.remove("fadeOut");
-  return_button.classList.add("fadeIn");
   return_button.style.display = "flex";
 }
 
