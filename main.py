@@ -116,11 +116,11 @@ def registing():
 @app.route('/result/<name>')
 def detail(name):
     cur = get_connection().cursor()
-    cur.execute('SELECT place FROM zgundam WHERE random_address LIKE %s;', (name,))
-    place = cur.fetchone()
+    cur.execute('SELECT place,cando FROM zgundam WHERE random_address LIKE %s;', (name,))
+    value = cur.fetchone()
     cur.close()
     get_connection().close()
-    return render_template('commons/detail_template.html', place = place, random_address = name)
+    return render_template('commons/detail_template.html',value = value,random_address = name)
 
 # ログインの過程
 @app.route('/login', methods=['POST'])
