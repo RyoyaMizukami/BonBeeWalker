@@ -36,7 +36,9 @@
   </section>
 
     {% if IsValue%}
+    <center>
       <p><font color="red" class="error_message">全ての項目を記入してね！</font></p>
+    </center>
     {% endif %}
 
     <!-- ジャンル、金額、場所、出来ること　の入力を司る箇所。ここで初めてformタグが登場する。
@@ -70,23 +72,24 @@
         </div>
 
 
-        <p><span class="item_heading">できた場所を教えてね！</span></p>
-        <div class="map_view">
+<!--        <p><span class="item_heading">できた場所を教えてね！</span></p>
+        <div class="map_view"> -->
           <!-- この部分はGoogle Maps APIの呼び出し。js読むと理解できます。 -->
-          <div style="display: none">
+<!--          <div style="display: none">
             <input id="pac-input"
                    class="controls"
                    type="text"
                    placeholder="地名・店名を入力">
           </div>
-          <div id="map"></div>
+          <div id="map"></div> -->
          <!--地図を表示する div 要素-->
-         <div id="infowindow-content">
+<!--         <div id="infowindow-content">
             <span id="place-name" class="title"></span><br>
             <span id="place-id"></span><br>
             <span id="place-address"></span>
           </div>
-        </div>
+        </div> -->
+
 <!--        <div class="place_input">
           <p><input type="text"
                  name="placeID"
@@ -94,13 +97,13 @@
                  placeholder="例)ChIJg4WsB-TlGGARxu8kOVsRRd4"></p>
         </div> -->
 
-<!--        <p><span class="item_heading">場所を入力しよう！</span></p>
+        <p><span class="item_heading">場所を入力しよう！</span></p>
         <div class="money_input select_box">
           <p><input type="text"
                  name="place"
                  class="place_window"
                  placeholder="地名・店名など"></p>
-        </div> -->
+        </div>
 
         <p><span class="item_heading">できたことを入力しよう！(60文字以内)</span></p>
         <div class="money_input select_box">
