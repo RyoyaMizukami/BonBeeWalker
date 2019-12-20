@@ -69,38 +69,38 @@
           <span class="yen">円</span>
         </div>
 
-<!--
-        <p><span class="item_heading">できた場所を検索して場所IDをコピペしよう！</span></p>
-        <div class="map_view"> -->
+
+        <p><span class="item_heading">できた場所を教えてね！</span></p>
+        <div class="map_view">
           <!-- この部分はGoogle Maps APIの呼び出し。js読むと理解できます。 -->
-<!--          <div style="display: none">
+          <div style="display: none">
             <input id="pac-input"
                    class="controls"
                    type="text"
                    placeholder="地名・店名を入力">
           </div>
-          <div id="map"></div> -->
+          <div id="map"></div>
          <!--地図を表示する div 要素-->
-<!--         <div id="infowindow-content">
+         <div id="infowindow-content">
             <span id="place-name" class="title"></span><br>
-            <strong>場所ID:</strong> <span id="place-id"></span><br>
+            <span id="place-id"></span><br>
             <span id="place-address"></span>
           </div>
         </div>
-        <div class="place_input">
+<!--        <div class="place_input">
           <p><input type="text"
                  name="placeID"
                  class="place_window"
                  placeholder="例)ChIJg4WsB-TlGGARxu8kOVsRRd4"></p>
         </div> -->
 
-        <p><span class="item_heading">場所を入力しよう！</span></p>
+<!--        <p><span class="item_heading">場所を入力しよう！</span></p>
         <div class="money_input select_box">
           <p><input type="text"
                  name="place"
                  class="place_window"
                  placeholder="地名・店名など"></p>
-        </div>
+        </div> -->
 
         <p><span class="item_heading">できたことを入力しよう！(60文字以内)</span></p>
         <div class="money_input select_box">
@@ -110,9 +110,9 @@
                  maxlength="60"></p>
         </div>
 
-        <div class="money_input   ">
-          <input type="submit" value="登録！" class="submit_button">
+        <div class="money_input">
           <input type="hidden" name=identity value="{{identity}}">
+          <input type="submit" value="登録！" class="submit_button">
         </div>
       </form>
     </div>

@@ -8,12 +8,14 @@ import random, string
 
 app = Flask(__name__)
 # ↓はGoogle Maps APIのAPIキーを定義してます。APIキーというのは鍵です。
-# API_key = os.environ.get('gmap_API')
+API_key = os.environ.get('gmap_API')
 
 # データベースに接続する関数です。
 def get_connection():
     dsn = os.environ.get('DATABASE_URL')
     return psycopg2.connect(dsn)
+
+
 
 # 最初にアクセスされるページ
 @app.route('/')
@@ -76,7 +78,7 @@ def registing():
 
     if type and money and place and cando:
         print(type, money, place, cando)
-        IsIDPassValue = False
+        IsValue = False
 
         random_address = random_address_generator(16)
         displayable = True
@@ -95,10 +97,10 @@ def registing():
 
         IsRegistration = True
 
-        return render_template('index2.html', IsIDPassValue = IsIDPassValue, IsRegistration = IsRegistration)
+        return render_template('index2.html', IsValue = IsValue, IsRegistration = IsRegistration)
     else:
-        IsIDPassValue = True
-        return render_template('commons/register.html', IsIDPassValue = IsIDPassValue, API_key = API_key)
+        IsValue = True
+        return render_template('commons/register.html', IsValue = IsValue, API_key = API_key, identity = identity)
 
 # 各URL用の概要ページ
 @app.route('/result/<name>')
