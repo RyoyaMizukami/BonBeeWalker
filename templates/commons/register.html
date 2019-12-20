@@ -6,7 +6,6 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- scriptタグはサイトに動きを与えるjsを呼び出すタグです。 -->
-    <!-- <script type="text/javascript" src="/static/js/gmap_api_test.js"></script> -->
     <!-- linkタグはサイトの見た目を変えることが出来るcssを呼び出すタグです。 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.1.2/css/bulma.css">
     <link rel="stylesheet" href="/static/css/index.css">
@@ -36,7 +35,9 @@
   </section>
 
     {% if IsValue%}
+    <center>
       <p><font color="red" class="error_message">全ての項目を記入してね！</font></p>
+    </center>
     {% endif %}
 
     <!-- ジャンル、金額、場所、出来ること　の入力を司る箇所。ここで初めてformタグが登場する。
@@ -69,9 +70,9 @@
           <span class="yen">円</span>
         </div>
 
-<!--
-        <p><span class="item_heading">できた場所を検索して場所IDをコピペしよう！</span></p>
-        <div class="map_view"> -->
+
+        <p><span class="item_heading">できた場所を教えてね！</span></p>
+<!--        <div class="map_view"> -->
           <!-- この部分はGoogle Maps APIの呼び出し。js読むと理解できます。 -->
 <!--          <div style="display: none">
             <input id="pac-input"
@@ -79,22 +80,16 @@
                    type="text"
                    placeholder="地名・店名を入力">
           </div>
-          <div id="map"></div> -->
+          <div id="map" width="100px", height="100px"></div> -->
          <!--地図を表示する div 要素-->
 <!--         <div id="infowindow-content">
             <span id="place-name" class="title"></span><br>
-            <strong>場所ID:</strong> <span id="place-id"></span><br>
+            <span id="place-id"></span><br>
             <span id="place-address"></span>
           </div>
         </div>
-        <div class="place_input">
-          <p><input type="text"
-                 name="placeID"
-                 class="place_window"
-                 placeholder="例)ChIJg4WsB-TlGGARxu8kOVsRRd4"></p>
-        </div> -->
 
-        <p><span class="item_heading">場所を入力しよう！</span></p>
+        <p><span class="item_heading">場所を入力しよう！</span></p> -->
         <div class="money_input select_box">
           <p><input type="text"
                  name="place"
@@ -110,12 +105,13 @@
                  maxlength="60"></p>
         </div>
 
-        <div class="money_input   ">
-          <input type="submit" value="登録！" class="submit_button">
+        <div class="money_input">
           <input type="hidden" name=identity value="{{identity}}">
+          <input type="submit" value="登録！" class="submit_button">
         </div>
       </form>
     </div>
   </body>
+  <script type="text/javascript" src="/static/js/gmap_api_test.js"></script>
   <script src="https://maps.googleapis.com/maps/api/js?key={{API_key}}&callback=initMap&libraries=places" async defer type="text/javascript"></script>
 </html>
