@@ -1,0 +1,126 @@
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+@charset "utf-8";
+@import "../node_modules/bulma/bulma.sass";
+
+#title {
+  font-size: 25px;
+  font-family: Corporate Logo Rounded;
+  color : red;
+  text-align: center;
+}
+
+#introduction{
+font-size: 20px;
+font-style: italic;
+color: green;
+text-align: center;
+}
+
+#main_table
+
+tbody{
+  text-align:center;
+}
+
+.result_in_money{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.budget{
+  font-size: 30px;
+  font-family: "メイリオ", sans-serif;
+  color: black;
+  font-weight: bold;
+}
+
+.nav_color{
+  background-color: #F0DDB6;
+}
+
+.index_bg{
+  background-image: linear-gradient(135deg, #f5f7fa, #c3cfe2, #f5f7fa, #c3cfe2);
+  height: 100vh;
+}
+
+.main_logo{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-end;
+  height: 40vh;
+}
+
+.logo_size{
+  height: 80%;
+  width: 65%;
+}
+
+.introduction{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  font-size: 50px;
+  color: white;
+  font-family: "メイリオ", sans-serif;
+}
+
+.search_window {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+  align-items:flex-start;
+}
+
+.pulldown_menu{
+  border: 1px;
+  font-size: 40px;
+}
+
+.wide_window {
+  width: 500px;
+  font-size: 40px;
+  text-align: center;
+}
+
+.big_button{
+  font-size: 30px;
+}
+
+.error_message{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  font-size: 30px;
+}
+
+.register_link_box{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.register_link{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  font-size: 30px;
+  color: red;
+}
+
+.return_moji{
+  font-size: 30px;
+  font-family:Verdana, "ＭＳ Ｐゴシック", sans-serif;
+}
+
+/*.parent {
+   display: -webkit-flex;
+   display: flex;
+   flex-wrap: wrap;
+}*/

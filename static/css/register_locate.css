@@ -1,0 +1,29 @@
+html,body{
+  margin: 0;
+  font-family:Verdana, "ＭＳ Ｐゴシック", sans-serif;
+  font-size:80%;
+}
+
+footer{
+  background-color: #FFF;
+  width: 1125px;
+}
+
+.title_box{
+  display: flex;
+  justify-content: center;
+}
+
+.title_text{
+  font-size: 40px;
+  text-align: center;
+}
+
+.elements_box{
+  display: flex;
+  justify-content: center;
+}
+
+.elements_text{
+  font-size: 30px;
+}

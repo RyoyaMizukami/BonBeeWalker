@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="jp" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>みんなで作るボンビーウォーカー！ - マイページ</title>
+    <link rel="stylesheet" href="static/css/index.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+    <link rel="stylesheet" href="/static/js/node_modules/animate.css/animate.min.css">
+    <script src="/static/js/node_modules/animejs/lib/anime.min.js"></script>
+  </head>
+
+  <body>
+    <nav class="level has-background-black is-marginless" style="padding:10px;">
+        <a class="level-item" href="{{url_for('index')}}">
+          <img src="/static/images/BonBeeWalker_logo1-01.svg">
+        </a>
+    </nav>
+
+    <nav class="level has-background-grey-lighter is-marginless">
+      <center>
+        <b class="level-item">{{identity}}さん
+          {% if NiceToMeetYou==False %}
+          おかえりなさい！
+          {% else %}
+          はじめまして！
+          {% endif %}
+        </b>
+      </center>
+    </nav>
+
+    <section class="section is-paddingless section_box">
+      <center><p class="title is-4">Guide</p>
+      <p><span class="moji_body">スポットの投稿や</span></p>
+      <p><span class="moji_body">投稿の削除ができるよ。</span></p>
+      </center>
+    </section>
+
+    <section class="section is-paddingless section_box">
+      <center>
+        <form action="/register" method="post">
+        <input type="hidden" name="identity" value="{{identity}}">
+        <button type="submit" class="button is-middle is-warning has-text-white" id="GotoRegister_button" name="type" style="margin:5px;">投稿フォーム</button>
+      </form>
+      </center>
+    </section>
+
+    <section class="section">
+      <center><p class="title is-4 underline">自　分　の　投　稿</p>
+        {% if data %}
+        <div id = "main_table">
+          <table border="1" align="center">
+              <thead>
+                <tr class="table_rabel">
+                  <th class="has-text-white">ジャンル</th><th class="has-text-white">金額</th><th class="has-text-white">場所</th><th class="has-text-white">出来ること</th>
+                  <th class="has-text-white">削除</th>
+                  <!--削除の枠は表示しない-->
+                </tr>
+              </thead>
+          <tbody class="table_body">
+            {% for row in data %}
+            {% if row.displayable %}
+           <tr>
+             <td>{{row.type}} </td><td width="10%">{{row.money}}</td><td>{{row.place}}</td><td>{{row.cando}}</td>
+
+               <td>
+                 <form action="/delete" method="post">
+                 <input type="hidden" name=delete_id value="{{row.id}}">
+                 <input type="hidden" name=identity value="{{identity}}">
+                 <input type="hidden" name=data value="{{data}}">
+                 <input type="submit" value="削除" class="button is-info is-small">
+                 </form>
+               </td>
+           </tr>
+            {% endif %}
+            {% endfor %}
+
+          {% elif not data %}
+            <p><span class="moji_body">まだ投稿がないよ〜！<br>ボンビースポットを登録しよう！</span></p>
+          {% endif %}
+          </tbody>
+        </table>
+      </div>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="jp" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../../static/css/index.css">
+    <link href="https://fonts.googleapis.com/css?family=Kaushan+Script" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+    <link rel="stylesheet" href="/static/js/node_modules/animate.css/animate.min.css">
+    <title>みんなで作るボンビーウォーカー！- {{value[0]}}が気になってるよ！</title>
+  </head>
+
+
+  <body>
+    <nav class="level has-background-black is-marginless" style="padding:10px;">
+        <a class="level-item" href="{{url_for('index')}}">
+          <img src="/static/images/BonBeeWalker_logo1-01.svg">
+        </a>
+    </nav>
+
+    <center><h1 class="title">{{value[0]}}</h1></center>
+
+
+    <div class="sns_logos">
+
+        <center>
+        <p id = "sns_templates">みんなにも共有しよう!</p>
+        <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-hashtags="ボンビーウォーカー" data-show-count="false">Tweet</a>
+        <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+        <div class="line-it-button" data-lang="ja" data-type="like" data-url="共有したいURL" data-share="true" style="display: none;"></div>
+        <script src="https://d.line-scdn.net/r/web/social-plugin/js/thirdparty/loader.min.js" async="async" defer="defer"></script>
+        </center>
+
+    </div>
+
+<!--
+    <center>
+      <h1 class="title">所在地</h1>
+    </center>
+
+    <center>
+    <iframe
+    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3239.3924870873716!2d139.51552231520145!3d35.716564735640915!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6018e5f2ce0fb48f%3A0x26c80b3e809bb2!2z5p2x5Lqs6YO956uL5bCP6YeR5LqV5YWs5ZyS!5e0!3m2!1sja!2sjp!4v1576560438032!5m2!1sja!2sjp"
+    width="375" height="200" frameborder="0" style="border:0;" allowfullscreen="">
+  　</iframe>
+</center> -->
+
+    <center>
+    <h1 class="title">できること</h1>
+    </center>
+
+    <center>
+    <p><span class="moji_body">{{value[1]}}</span></p>
+    </center>
+
+
+
+
+
+  </body>
+</html>
